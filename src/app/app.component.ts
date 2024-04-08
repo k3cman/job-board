@@ -3,9 +3,9 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <h1>Welcome to {{title}}!</h1>
-
-    <router-outlet />
+    <app-layout>
+      <router-outlet />
+    </app-layout>
   `,
   styleUrl: './app.component.scss'
 })

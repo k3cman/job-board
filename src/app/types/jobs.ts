@@ -30,4 +30,3 @@ export interface JobAdDto extends JobAd {
   updatedAt: Date;
   _embedded: unknown;
 }
-

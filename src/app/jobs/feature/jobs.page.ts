@@ -1,8 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { JobsService } from '../data-access/jobs.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EditJobDialogComponent } from './edit-job/edit-job.dialog';
 import { CreateJobDialogComponent } from './create-job/create-job.dialog';
+import { JobsStore } from '../store/job.store';
+import { JobAdDto } from '../../types/jobs';
 
 @Component({
   template: `
@@ -12,7 +14,7 @@ import { CreateJobDialogComponent } from './create-job/create-job.dialog';
           <mat-icon> add_circle </mat-icon>
         </button>
       </div>
-      <table mat-table [dataSource]="dataSource$ | async">
+      <table mat-table [dataSource]="(dataSource$ | async) || []">
         <ng-container matColumnDef="title">
           <th mat-header-cell *matHeaderCellDef>Title</th>
           <td mat-cell *matCellDef="let element">{{ element.title }}</td>
@@ -61,21 +63,27 @@ import { CreateJobDialogComponent } from './create-job/create-job.dialog';
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [JobsStore],
 })
-export class JobsPageComponent {
-  dataSource$ = this.jobsService.getJobs();
+export class JobsPageComponent implements OnInit {
+  dataSource$ = this.store.data$;
   displayedColumns = ['title', 'description', 'skills', 'status', 'actions'];
   constructor(
     private jobsService: JobsService,
     private dialog: MatDialog,
+    public store: JobsStore,
   ) {}
 
-  deleteJob(element: any) {
+  ngOnInit() {
+    this.store.fetch();
+  }
+
+  deleteJob(element: JobAdDto) {
     //TODO add confirmation dialog
     this.jobsService.deleteJob(element.id).subscribe();
   }
 
-  editJob(element: any) {
+  editJob(element: JobAdDto) {
     this.dialog.open(EditJobDialogComponent, {
       height: '100vh',
       width: '500px',
@@ -88,13 +96,18 @@ export class JobsPageComponent {
   }
 
   createJob() {
-    this.dialog.open(CreateJobDialogComponent, {
-      height: '100vh',
-      width: '500px',
-      position: {
-        top: '0',
-        right: '0',
-      },
-    });
+    this.dialog
+      .open(CreateJobDialogComponent, {
+        height: '100vh',
+        width: '500px',
+        position: {
+          top: '0',
+          right: '0',
+        },
+      })
+      .afterClosed()
+      .subscribe((data) => {
+        this.store.addJobAd(data);
+      });
   }
 }

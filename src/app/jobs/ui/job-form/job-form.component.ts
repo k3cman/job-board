@@ -7,6 +7,7 @@ import {
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
+import { JobAdDto } from '../../../types/jobs';
 
 @Component({
   selector: 'app-job-form',
@@ -47,20 +48,20 @@ export class JobFormComponent {
     status: [null],
   });
 
-  @Input() set initialValue(value: any) {
+  @Input() set initialValue(value: JobAdDto) {
     this.form.patchValue({
       ...value,
     });
   }
 
   @Output() readonly cancel = new EventEmitter<void>();
-  @Output() readonly submit = new EventEmitter<any>();
+  @Output() readonly submitJobAd = new EventEmitter<JobAdDto>();
 
   constructor(private fb: UntypedFormBuilder) {}
 
   handleSubmit() {
     if (this.form.valid) {
-      this.submit.emit(this.form.getRawValue());
+      this.submitJobAd.emit(this.form.getRawValue());
     }
   }
 }

@@ -87,15 +87,23 @@ export class JobsPageComponent implements OnInit {
   }
 
   editJob(element: JobAdDto) {
-    this.dialog.open(EditJobDialogComponent, {
-      height: '100vh',
-      width: '500px',
-      position: {
-        top: '0',
-        right: '0',
-      },
-      data: element,
-    });
+    this.dialog
+      .open(EditJobDialogComponent, {
+        height: '100vh',
+        width: '500px',
+        position: {
+          top: '0',
+          right: '0',
+        },
+        data: element,
+      })
+      .afterClosed()
+      .subscribe((data) => {
+        if (data) {
+          console.log(data);
+          this.store.updateJobAd(data);
+        }
+      });
   }
 
   createJob() {
@@ -110,7 +118,9 @@ export class JobsPageComponent implements OnInit {
       })
       .afterClosed()
       .subscribe((data) => {
-        this.store.addJobAd(data);
+        if (data) {
+          this.store.addJobAd(data);
+        }
       });
   }
 }

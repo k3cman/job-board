@@ -50,6 +50,10 @@ export class JobsStore extends ComponentStore<JobAdDto[]> {
     },
   );
 
+  updateJobAd = this.updater((state, job: JobAdDto) =>
+    state.map((e) => (e.id === job.id ? job : e)),
+  );
+
   updateJobs = this.updater((state, job: JobAdDto) => [...state, job]);
   removeJob = this.updater((state, id: string) => {
     return state.filter((e) => e.id.toString() !== id);

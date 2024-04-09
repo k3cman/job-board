@@ -14,7 +14,7 @@ import { JobAdDto } from '../../../types/jobs';
   standalone: true,
   imports: [ReactiveFormsModule, MatFormField, MatInput, MatLabel, MatButton],
   template: `
-    <form [formGroup]="form" (ngSubmit)="handleSubmit()">
+    <form [formGroup]="form" (ngSubmit)="handleSubmit()" class="flex flex-col">
       <mat-form-field>
         <mat-label>Title</mat-label>
         <input matInput formControlName="title" />
@@ -48,10 +48,12 @@ export class JobFormComponent {
     status: [null],
   });
 
-  @Input() set initialValue(value: JobAdDto) {
-    this.form.patchValue({
-      ...value,
-    });
+  @Input() set initialValue(value: JobAdDto | undefined) {
+    if (value) {
+      this.form.patchValue({
+        ...value,
+      });
+    }
   }
 
   @Output() readonly cancel = new EventEmitter<void>();

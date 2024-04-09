@@ -1,18 +1,19 @@
-import { Component } from '@angular/core';
-import {JobsService} from "../services/jobs.service";
-import {DialogPosition, MatDialog} from "@angular/material/dialog";
-import {EditJobComponent} from "../edit-job/edit-job.component";
-import {DialogConfig} from "@angular/cdk/dialog";
+import {ChangeDetectionStrategy, Component} from "@angular/core";
+import {JobsService} from "../data-access/jobs.service";
+import {MatDialog} from "@angular/material/dialog";
+import {EditJobDialogComponent} from "./edit-job/edit-job.dialog";
+import {CreateJobDialogComponent} from "./create-job/create-job.dialog";
 
 @Component({
-  selector: 'app-overview',
-  template: `
+  template:`
     <div>
-      <button mat-mini-fab>
-        <mat-icon>
-          add_circle
-        </mat-icon>
-      </button>
+      <div class="flex items-center justify-end p-2">
+        <button mat-mini-fab (click)="createJob()">
+          <mat-icon>
+            add_circle
+          </mat-icon>
+        </button>
+      </div>
       <table mat-table [dataSource]="dataSource$ | async">
         <ng-container matColumnDef="title">
           <th mat-header-cell *matHeaderCellDef> Title </th>
@@ -51,16 +52,15 @@ import {DialogConfig} from "@angular/cdk/dialog";
       </table>
     </div>
   `,
-  styleUrl: './overview.component.scss'
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OverviewComponent {
- dataSource$ = this.jobsService.getJobs()
+export class JobsPageComponent {
+  dataSource$ = this.jobsService.getJobs()
   displayedColumns = ['title', 'description','skills','status', 'actions']
   constructor(
     private jobsService: JobsService,
     private dialog: MatDialog
   ) {
-
   }
 
   deleteJob(element:any) {
@@ -69,7 +69,7 @@ export class OverviewComponent {
   }
 
   editJob(element:any) {
-    this.dialog.open(EditJobComponent, {
+    this.dialog.open(EditJobDialogComponent, {
       height:'100vh',
       width:'500px',
       position:{
@@ -77,6 +77,17 @@ export class OverviewComponent {
         right:'0'
       },
       data: element
+    })
+  }
+
+  createJob() {
+    this.dialog.open(CreateJobDialogComponent, {
+      height:'100vh',
+      width:'500px',
+      position:{
+        top: '0',
+        right:'0'
+      },
     })
   }
 }

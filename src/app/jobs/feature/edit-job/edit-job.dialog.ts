@@ -1,9 +1,7 @@
-import {ChangeDetectionStrategy, Component} from "@angular/core";
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  template: `
-    <app-job-form></app-job-form>
-  `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  template: ` <app-job-form></app-job-form> `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EditJobDialogComponent{}
+export class EditJobDialogComponent {}

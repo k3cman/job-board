@@ -80,7 +80,10 @@ export class JobsPageComponent implements OnInit {
 
   deleteJob(element: JobAdDto) {
     //TODO add confirmation dialog
-    this.jobsService.deleteJob(element.id).subscribe();
+    this.jobsService.deleteJob(element.id).subscribe((data) => {
+      this.store.deleteJobAd(data);
+      console.log(data);
+    });
   }
 
   editJob(element: JobAdDto) {

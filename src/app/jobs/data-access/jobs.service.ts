@@ -25,8 +25,8 @@ export class JobsService {
     );
   }
 
-  deleteJob(id: number): Observable<void> {
-    return this.http.delete<void>(
+  deleteJob(id: number): Observable<{ id: string; isTrusted: boolean }> {
+    return this.http.delete<{ id: string; isTrusted: boolean }>(
       'http://localhost:3000/jobs/' + id.toString(),
     );
   }

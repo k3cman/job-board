@@ -51,13 +51,6 @@
       "status": "draft",
       "createdAt": "2024-03-25T12:00:00Z",
       "updatedAt": "2024-03-25T12:00:00Z"
-    },
-    {
-      "id": "242c",
-      "title": "Nemanja",
-      "description": "Nemanja",
-      "skills": "magic",
-      "status": "draft"
     }
   ],
   "invoices": []

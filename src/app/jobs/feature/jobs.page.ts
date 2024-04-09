@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditJobDialogComponent } from './edit-job/edit-job.dialog';
 import { CreateJobDialogComponent } from './create-job/create-job.dialog';
 import { JobsStore } from '../store/job.store';
-import { JobAdDto } from '../../types/jobs';
+import {JobAdDto, JobAdStatus} from '../../types/jobs';
 
 @Component({
   template: `
@@ -28,32 +28,49 @@ import { JobAdDto } from '../../types/jobs';
         <ng-container matColumnDef="skills">
           <th mat-header-cell *matHeaderCellDef>Skills</th>
           <td mat-cell *matCellDef="let element">
-            {{ element.skills | json }}
+            <app-job-skills [skills]="element.skills"></app-job-skills>
           </td>
         </ng-container>
 
         <ng-container matColumnDef="status">
           <th mat-header-cell *matHeaderCellDef>Status</th>
-          <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+          <td mat-cell *matCellDef="let element">
+            <app-job-status [status]="element.status" />
+          </td>
         </ng-container>
 
         <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef></th>
           <td mat-cell *matCellDef="let element">
-            <button
-              mat-icon-button
-              aria-label="Example icon button with a vertical three dot icon"
-              (click)="editJob(element)"
-            >
-              <mat-icon>edit</mat-icon>
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon>more_vert</mat-icon>
             </button>
-            <button
-              mat-icon-button
-              aria-label="Example icon button with a vertical three dot icon"
-              (click)="deleteJob(element)"
-            >
-              <mat-icon>delete</mat-icon>
-            </button>
+
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="handleStatusChange(element)">
+                {{element.status === 'draft' ? 'Publish Job' : 'Archive Job'}}
+              </button>
+              <button mat-menu-item (click)="editJob(element)">
+                Edit Job
+              </button>
+              <button mat-menu-item (click)="deleteJob(element)">
+                Delete Job
+              </button>
+            </mat-menu>
+<!--            <button-->
+<!--              mat-icon-button-->
+<!--              aria-label="Example icon button with a vertical three dot icon"-->
+<!--              (click)="editJob(element)"-->
+<!--            >-->
+<!--              <mat-icon>edit</mat-icon>-->
+<!--            </button>-->
+<!--            <button-->
+<!--              mat-icon-button-->
+<!--              aria-label="Example icon button with a vertical three dot icon"-->
+<!--              (click)="deleteJob(element)"-->
+<!--            >-->
+<!--              <mat-icon>delete</mat-icon>-->
+<!--            </button>-->
           </td>
         </ng-container>
 
@@ -122,5 +139,9 @@ export class JobsPageComponent implements OnInit {
           this.store.addJobAd(data);
         }
       });
+  }
+
+  handleStatusChange(element:JobAdDto) {
+    console.log(element)
   }
 }

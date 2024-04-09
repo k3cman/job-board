@@ -5,10 +5,12 @@ import { JobAdDto } from '../../../types/jobs';
 
 @Component({
   template: `
+    <app-sidebar-dialog-wrapper title="Create Job Ad">
     <app-job-form
       (cancel)="cancel()"
       (submitJobAd)="createJobAd($event)"
     ></app-job-form>
+    </app-sidebar-dialog-wrapper>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -34,8 +34,10 @@ import { JobAdDto } from '../../../types/jobs';
         <input matInput formControlName="status" />
       </mat-form-field>
 
-      <button mat-button (cancel)="cancel.emit()">Cancel</button>
-      <button mat-button type="submit">Submit</button>
+      <div footer>
+        <button mat-button (cancel)="cancel.emit()">Cancel</button>
+        <button mat-button type="submit">Submit</button>
+      </div>
     </form>
   `,
   styleUrl: './job-form.component.scss',

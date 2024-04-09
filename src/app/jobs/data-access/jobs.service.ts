@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {JobAdDto} from "../../types/jobs";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root',
@@ -7,11 +9,19 @@ import { HttpClient } from '@angular/common/http';
 export class JobsService {
   constructor(private http: HttpClient) {}
 
-  getJobs() {
-    return this.http.get<any>('http://localhost:3000/jobs');
+  getJobs():Observable<JobAdDto[]> {
+    return this.http.get<JobAdDto[]>('http://localhost:3000/jobs');
   }
 
-  deleteJob(id: string) {
-    return this.http.delete<any>('http://localhost:3000/jobs/' + id);
+  createJob(payload: JobAdDto):Observable<JobAdDto>{
+    return this.http.post<JobAdDto>('http://localhost:3000/jobs', payload)
+  }
+
+  updateJob(payload:JobAdDto):Observable<JobAdDto>{
+    return this.http.put<JobAdDto>('http://localhost:3000/jobs/'+payload.id, payload)
+  }
+
+  deleteJob(id: string):Observable<void> {
+    return this.http.delete<void>('http://localhost:3000/jobs/' + id);
   }
 }

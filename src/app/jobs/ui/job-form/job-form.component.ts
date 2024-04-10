@@ -81,11 +81,15 @@ interface IJobForm {
         />
       </mat-form-field>
 
-      <div>
-        <button mat-button (click)="handleSubmit('draft')">
+      <div class="flex justify-end">
+        <button class="mr-2" mat-stroked-button (click)="handleSubmit('draft')">
           {{ editMode ? 'Update' : 'Create' }}
         </button>
-        <button mat-button (click)="handleSubmit('published')">
+        <button
+          mat-stroked-button
+          color="primary"
+          (click)="handleSubmit('published')"
+        >
           {{ editMode ? 'Update' : 'Create' }} and Publish
         </button>
       </div>

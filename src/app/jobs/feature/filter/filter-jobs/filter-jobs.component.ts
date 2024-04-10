@@ -55,9 +55,13 @@ interface IJobFilterForm {
           </mat-select>
         </mat-form-field>
 
-        <div>
-          <button mat-button (click)="clearFilters()">Clear</button>
-          <button mat-button type="submit">Apply Filters</button>
+        <div class="flex justify-end">
+          <button mat-stroked-button class="mr-2" (click)="clearFilters()">
+            Clear
+          </button>
+          <button mat-stroked-button color="primary" type="submit">
+            Apply Filters
+          </button>
         </div>
       </form>
     </app-sidebar-dialog-wrapper>

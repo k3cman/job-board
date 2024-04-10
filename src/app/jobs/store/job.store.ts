@@ -39,13 +39,7 @@ export class JobsStore extends ComponentStore<IJobStore> {
       switchMap((job: JobAdDto) => {
         this.updateJobs(job);
         if (job.status === 'published') {
-          return this.invoiceService.createInvoice({
-            jobAdId: job.id,
-            amount: 333,
-            createdAt: new Date(),
-            updatedAt: new Date(),
-            dueDate: new Date(),
-          });
+          return this.createInvoiceForPublishedJob(job);
         } else {
           return EMPTY;
         }
@@ -86,13 +80,7 @@ export class JobsStore extends ComponentStore<IJobStore> {
     return job.pipe(
       switchMap((job) => {
         if (job.status === 'published') {
-          return this.invoiceService.createInvoice({
-            jobAdId: job.id,
-            amount: 333,
-            createdAt: new Date(),
-            updatedAt: new Date(),
-            dueDate: new Date(),
-          });
+          return this.createInvoiceForPublishedJob(job);
         } else {
           return EMPTY;
         }
@@ -103,17 +91,14 @@ export class JobsStore extends ComponentStore<IJobStore> {
   publishJob = this.effect((job: Observable<JobAdDto>) => {
     return job.pipe(
       switchMap((jobAd) => {
-        // this.createInvoiceForJob(jobAd)
-        return this.jobService
-          .updateJob({
-            ...jobAd,
-            status: 'published',
-          })
-          .pipe(
-            tap((job) => {
-              this.updateJobAd(job);
-            }),
-          );
+        return this.jobService.updateJob({
+          ...jobAd,
+          status: 'published',
+        });
+      }),
+      switchMap((job: JobAdDto) => {
+        this.updateJobAd(job);
+        return this.createInvoiceForPublishedJob(job);
       }),
     );
   });
@@ -160,5 +145,9 @@ export class JobsStore extends ComponentStore<IJobStore> {
       filters: undefined,
       loading: true,
     });
+  }
+
+  private createInvoiceForPublishedJob(jobAd: JobAdDto) {
+    return this.invoiceService.createInvoiceForJob(jobAd.id.toString());
   }
 }

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
-import { InvoiceDto } from '../../types/invoices';
+import { Invoice, InvoiceDto } from '../../types/invoices';
+import { JobAdDto } from '../../types/jobs';
 
 @Injectable({
   providedIn: 'root',
@@ -28,5 +29,18 @@ export class InvoicesService {
 
   deleteInvoice(id: string): Observable<void> {
     return this.http.delete<void>('http://localhost:3000/invoices/' + id);
+  }
+
+  createInvoiceForJob(jobId: string) {
+    // Todo create helper function
+    const dueDate = new Date();
+    dueDate.setDate(dueDate.getDate() + 45);
+    const invoice: Partial<InvoiceDto> = {
+      jobAdId: +jobId,
+      amount: Math.floor(Math.random() * 7) * 10,
+      dueDate,
+    };
+
+    return this.createInvoice(invoice);
   }
 }

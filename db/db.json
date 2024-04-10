@@ -22,7 +22,7 @@
         "entertainment",
         "coordination"
       ],
-      "status": "draft",
+      "status": "published",
       "createdAt": "2024-03-22T10:15:00Z",
       "updatedAt": "2024-03-22T10:15:00Z"
     },
@@ -61,10 +61,38 @@
         "banana",
         "balance"
       ],
-      "status": "draft",
+      "status": "published",
       "createdAt": "2024-03-25T12:00:00Z",
       "updatedAt": "2024-03-25T12:00:00Z"
+    },
+    {
+      "id": "fdef",
+      "title": "New",
+      "description": "New Description",
+      "skills": [],
+      "status": "published"
     }
   ],
-  "invoices": []
+  "invoices": [
+    {
+      "id": "eef8",
+      "jobAdId": "fdef",
+      "amount": 333,
+      "createdAt": "2024-04-10T22:23:12.056Z",
+      "updatedAt": "2024-04-10T22:23:12.056Z",
+      "dueDate": "2024-04-10T22:23:12.056Z"
+    },
+    {
+      "id": "ce90",
+      "jobAdId": 2,
+      "amount": 5,
+      "dueDate": "2024-05-25T22:35:52.779Z"
+    },
+    {
+      "id": "7895",
+      "jobAdId": 5,
+      "amount": 30,
+      "dueDate": "2024-05-25T22:37:02.173Z"
+    }
+  ]
 }

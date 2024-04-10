@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { InvoicesService } from '../data-access/invoices.service';
-import { filter, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { InvoiceDto } from '../../types/invoices';
 
 @Component({

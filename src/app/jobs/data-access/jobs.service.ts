@@ -15,7 +15,6 @@ export class JobsService {
   }
 
   createJob(payload: JobAdDto): Observable<JobAdDto> {
-    console.log('123');
     return this.http.post<JobAdDto>('http://localhost:3000/jobs', payload);
   }
 

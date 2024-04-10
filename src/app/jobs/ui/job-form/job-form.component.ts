@@ -100,7 +100,7 @@ export class JobFormComponent {
       Validators.required,
       Validators.minLength(10),
     ]),
-    skills: this.fb.control<string[]>([], [Validators.required]),
+    skills: this.fb.control<string[]>([]),
   });
 
   public editMode = false;

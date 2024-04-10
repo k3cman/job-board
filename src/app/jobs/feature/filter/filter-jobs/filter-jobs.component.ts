@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormControl } from '@angular/forms';
-import { JobAdDto } from '../../../../types/jobs';
 
 interface IJobFilterForm {
   title: FormControl<string | null>;

@@ -68,6 +68,4 @@ export class LayoutComponent {
     startWith(window.innerWidth),
     map(() => window.innerWidth),
   );
-
-  constructor() {}
 }

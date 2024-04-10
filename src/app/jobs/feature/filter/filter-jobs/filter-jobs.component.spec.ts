@@ -8,10 +8,9 @@ describe('FilterJobsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FilterJobsComponent]
-    })
-    .compileComponents();
-    
+      declarations: [FilterJobsComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(FilterJobsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

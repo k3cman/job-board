@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { JobsPageComponent } from './jobs.page';
 import { JobsRoutingModule } from './jobs-routing.module';
-import { AsyncPipe, CommonModule, JsonPipe, NgForOf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import {
   MatCell,
   MatCellDef,

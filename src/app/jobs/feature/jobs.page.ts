@@ -5,11 +5,17 @@ import { EditJobDialogComponent } from './edit-job/edit-job.dialog';
 import { CreateJobDialogComponent } from './create-job/create-job.dialog';
 import { JobsStore } from '../store/job.store';
 import { JobAdDto } from '../../types/jobs';
+import { FilterJobsComponent } from './filter/filter-jobs/filter-jobs.component';
+import { Router } from '@angular/router';
 
 @Component({
   template: `
     <div>
       <div class="flex items-center justify-end p-2">
+        <button mat-stroked-button (click)="openFilter()" class="mr-4">
+          <mat-icon>filter_alt</mat-icon>
+          Filter
+        </button>
         <button mat-stroked-button color="primary" (click)="createJob()">
           <mat-icon>add</mat-icon>
           Create Job Ad
@@ -74,10 +80,11 @@ export class JobsPageComponent implements OnInit {
     private jobsService: JobsService,
     private dialog: MatDialog,
     public store: JobsStore,
+    private router: Router,
   ) {}
 
   ngOnInit() {
-    this.store.fetch();
+    // this.store.fetch();
   }
 
   deleteJob(element: JobAdDto) {
@@ -128,5 +135,22 @@ export class JobsPageComponent implements OnInit {
 
   handleStatusChange(element: JobAdDto) {
     console.log(element);
+  }
+
+  openFilter() {
+    this.dialog
+      .open(FilterJobsComponent, {
+        height: '100vh',
+        width: '500px',
+        position: {
+          top: '0',
+          right: '0',
+        },
+      })
+      .afterClosed()
+      .subscribe((data) => {
+        console.log(data);
+        this.router.navigate([], { queryParams: { ...data } });
+      });
   }
 }

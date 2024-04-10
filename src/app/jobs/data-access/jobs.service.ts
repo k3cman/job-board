@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { JobAdDto } from '../../types/jobs';
 import { Observable } from 'rxjs';
 
@@ -9,8 +9,9 @@ import { Observable } from 'rxjs';
 export class JobsService {
   constructor(private http: HttpClient) {}
 
-  getJobs(): Observable<JobAdDto[]> {
-    return this.http.get<JobAdDto[]>('http://localhost:3000/jobs');
+  getJobs(filter: any): Observable<JobAdDto[]> {
+    const params = new HttpParams().appendAll(filter);
+    return this.http.get<JobAdDto[]>('http://localhost:3000/jobs', { params });
   }
 
   createJob(payload: JobAdDto): Observable<JobAdDto> {

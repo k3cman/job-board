@@ -5,15 +5,20 @@ import { JobsService } from '../data-access/jobs.service';
 import { EMPTY, Observable, switchMap, tap } from 'rxjs';
 import { InvoicesService } from '../../invoices/data-access/invoices.service';
 import { InvoiceDto } from '../../types/invoices';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable()
 export class JobsStore extends ComponentStore<JobAdDto[]> {
   data$ = this.select((state) => state);
 
-  fetch = this.effect(() =>
-    this.jobService.getJobs().pipe(
-      tap((data) => {
-        this.setState(data);
+  fetch = this.effect((filter: Observable<any>) =>
+    filter.pipe(
+      switchMap((filter) => {
+        return this.jobService.getJobs(filter).pipe(
+          tap((data) => {
+            this.setState(data);
+          }),
+        );
       }),
     ),
   );
@@ -33,6 +38,14 @@ export class JobsStore extends ComponentStore<JobAdDto[]> {
         } else {
           return EMPTY;
         }
+      }),
+    );
+  });
+
+  listenToFilters = this.effect(() => {
+    return this.activatedRoute.queryParams.pipe(
+      tap((value) => {
+        this.fetch(value);
       }),
     );
   });
@@ -65,6 +78,7 @@ export class JobsStore extends ComponentStore<JobAdDto[]> {
   constructor(
     private jobService: JobsService,
     private invoiceService: InvoicesService,
+    private activatedRoute: ActivatedRoute,
   ) {
     super([]);
   }

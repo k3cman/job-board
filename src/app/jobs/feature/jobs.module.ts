@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { JobsPageComponent } from './jobs.page';
 import { JobsRoutingModule } from './jobs-routing.module';
-import { AsyncPipe, JsonPipe } from '@angular/common';
+import { AsyncPipe, JsonPipe, NgForOf } from '@angular/common';
 import {
   MatCell,
   MatCellDef,
@@ -27,12 +27,19 @@ import { JobStatusComponent } from '../../shared/ui/job-status/job-status.compon
 import { JobSkillsComponent } from '../../shared/ui/job-skills/job-skills.component';
 import { SidebarDialogWrapperComponent } from '../../shared/ui/sidebar-dialog-wrapper/sidebar-dialog-wrapper.component';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
+import { FilterJobsComponent } from './filter/filter-jobs/filter-jobs.component';
+import { MatChipGrid, MatChipInput, MatChipRow } from '@angular/material/chips';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatOption, MatSelect } from '@angular/material/select';
 
 @NgModule({
   declarations: [
     JobsPageComponent,
     EditJobDialogComponent,
     CreateJobDialogComponent,
+    FilterJobsComponent,
   ],
   imports: [
     JobsRoutingModule,
@@ -59,6 +66,16 @@ import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
     MatMenuItem,
     MatMenuTrigger,
     MatButton,
+    MatChipGrid,
+    MatChipInput,
+    MatChipRow,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    NgForOf,
+    ReactiveFormsModule,
+    MatSelect,
+    MatOption,
   ],
 })
 export class JobsModule {}

@@ -87,7 +87,7 @@
       },
       {
         "file": "angular.json",
-        "hash": "640967321014623668"
+        "hash": "5700357967028005526"
       },
       {
         "file": "package-lock.json",
@@ -115,7 +115,7 @@
       },
       {
         "file": "src/app/app.module.ts",
-        "hash": "17520420417078065562"
+        "hash": "14139789874459931136"
       },
       {
         "file": "src/app/core/layout/layout/layout.component.scss",
@@ -130,6 +130,10 @@
         "hash": "12332436918518076647"
       },
       {
+        "file": "src/app/core/repositories/base.repository.ts",
+        "hash": "9472414909415831612"
+      },
+      {
         "file": "src/app/invoices/data-access/invoices.service.ts",
         "hash": "8541498419826971766"
       },
@@ -139,23 +143,39 @@
       },
       {
         "file": "src/app/invoices/feature/invoices.module.ts",
-        "hash": "16235410877150053849"
+        "hash": "13657788319338073481"
       },
       {
         "file": "src/app/invoices/feature/invoices.page.ts",
-        "hash": "11342638866487443837"
+        "hash": "9347757367614717808"
+      },
+      {
+        "file": "src/app/jobs/data-access/jobs-repo.service.ts",
+        "hash": "5922671383756151464"
       },
       {
         "file": "src/app/jobs/data-access/jobs.service.ts",
-        "hash": "13246174588122011325"
+        "hash": "15745964973875090530"
       },
       {
         "file": "src/app/jobs/feature/create-job/create-job.dialog.ts",
-        "hash": "9506839732125160513"
+        "hash": "15045563858896420387"
       },
       {
         "file": "src/app/jobs/feature/edit-job/edit-job.dialog.ts",
-        "hash": "3901104519106573708"
+        "hash": "17124286629481257777"
+      },
+      {
+        "file": "src/app/jobs/feature/filter/filter-jobs/filter-jobs.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/jobs/feature/filter/filter-jobs/filter-jobs.component.spec.ts",
+        "hash": "12694961344737914983"
+      },
+      {
+        "file": "src/app/jobs/feature/filter/filter-jobs/filter-jobs.component.ts",
+        "hash": "4069607708257454612"
       },
       {
         "file": "src/app/jobs/feature/jobs-routing.module.ts",
@@ -163,15 +183,15 @@
       },
       {
         "file": "src/app/jobs/feature/jobs.module.ts",
-        "hash": "758382628356857251"
+        "hash": "1463492387260754349"
       },
       {
         "file": "src/app/jobs/feature/jobs.page.ts",
-        "hash": "11467543849575080487"
+        "hash": "1764750463588427634"
       },
       {
         "file": "src/app/jobs/store/job.store.ts",
-        "hash": "14936798322614954097"
+        "hash": "4862292304549655079"
       },
       {
         "file": "src/app/jobs/ui/job-form/job-form.component.scss",
@@ -183,7 +203,7 @@
       },
       {
         "file": "src/app/jobs/ui/job-form/job-form.component.ts",
-        "hash": "9403558691384952544"
+        "hash": "2122677933942040171"
       },
       {
         "file": "src/app/shared/ui/job-skills/job-skills.component.scss",
@@ -191,11 +211,11 @@
       },
       {
         "file": "src/app/shared/ui/job-skills/job-skills.component.spec.ts",
-        "hash": "16525069747830128083"
+        "hash": "14075853846480510954"
       },
       {
         "file": "src/app/shared/ui/job-skills/job-skills.component.ts",
-        "hash": "8304041216641520311"
+        "hash": "16248987119523708615"
       },
       {
         "file": "src/app/shared/ui/job-status/job-status.component.scss",
@@ -203,11 +223,11 @@
       },
       {
         "file": "src/app/shared/ui/job-status/job-status.component.spec.ts",
-        "hash": "12681201221874286579"
+        "hash": "18422134598754045458"
       },
       {
         "file": "src/app/shared/ui/job-status/job-status.component.ts",
-        "hash": "17332079595863180929"
+        "hash": "7184439103376980192"
       },
       {
         "file": "src/app/shared/ui/sidebar-dialog-wrapper/sidebar-dialog-wrapper.component.scss",
@@ -215,23 +235,31 @@
       },
       {
         "file": "src/app/shared/ui/sidebar-dialog-wrapper/sidebar-dialog-wrapper.component.spec.ts",
-        "hash": "17155283594358876199"
+        "hash": "2077482557671277506"
       },
       {
         "file": "src/app/shared/ui/sidebar-dialog-wrapper/sidebar-dialog-wrapper.component.ts",
-        "hash": "17391461609707199156"
+        "hash": "13482421064107260683"
       },
       {
         "file": "src/app/types/invoices.ts",
-        "hash": "9592965064076996188"
+        "hash": "14084059248696481481"
       },
       {
         "file": "src/app/types/jobs.ts",
-        "hash": "3857009150921213086"
+        "hash": "1001087577221407693"
       },
       {
         "file": "src/assets/.gitkeep",
         "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/environments/environment.development.ts",
+        "hash": "15903058676062197788"
+      },
+      {
+        "file": "src/environments/environment.ts",
+        "hash": "14856985492697373882"
       },
       {
         "file": "src/favicon.ico",

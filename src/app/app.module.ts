@@ -7,7 +7,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { LayoutComponent } from './core/layout/layout/layout.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import localeCh from '@angular/common/locales/de-CH';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeCh);
 @NgModule({
   declarations: [AppComponent],
   imports: [

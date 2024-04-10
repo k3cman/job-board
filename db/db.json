@@ -51,7 +51,45 @@
       "status": "draft",
       "createdAt": "2024-03-25T12:00:00Z",
       "updatedAt": "2024-03-25T12:00:00Z"
+    },
+    {
+      "id": "96f6",
+      "title": "Nemanja",
+      "description": "Nemanja description",
+      "skills": [
+        "skill",
+        "skill2"
+      ],
+      "status": "published"
+    },
+    {
+      "id": "c5a9",
+      "title": "123",
+      "description": "123213123123123123",
+      "skills": [
+        "12213",
+        "123123",
+        "122312"
+      ],
+      "status": "published"
     }
   ],
-  "invoices": []
+  "invoices": [
+    {
+      "id": "0f97",
+      "jobAdId": "96f6",
+      "amount": 333,
+      "createdAt": "2024-04-10T15:47:29.939Z",
+      "updatedAt": "2024-04-10T15:47:29.939Z",
+      "dueDate": "2024-04-10T15:47:29.939Z"
+    },
+    {
+      "id": "d6eb",
+      "jobAdId": "c5a9",
+      "amount": 333,
+      "createdAt": "2024-04-10T15:47:42.809Z",
+      "updatedAt": "2024-04-10T15:47:42.809Z",
+      "dueDate": "2024-04-10T15:47:42.809Z"
+    }
+  ]
 }

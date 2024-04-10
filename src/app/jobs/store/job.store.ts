@@ -22,13 +22,17 @@ export class JobsStore extends ComponentStore<JobAdDto[]> {
     return job.pipe(
       switchMap((job: JobAdDto) => {
         this.updateJobs(job);
-        return this.invoiceService.createInvoice({
-          jobAdId: job.id,
-          amount: 333,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-          dueDate: new Date(),
-        });
+        if (job.status === 'published') {
+          return this.invoiceService.createInvoice({
+            jobAdId: job.id,
+            amount: 333,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            dueDate: new Date(),
+          });
+        } else {
+          return EMPTY;
+        }
       }),
     );
   });

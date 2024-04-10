@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormControl } from '@angular/forms';
+import { JobAdDto } from '../../../../types/jobs';
 
 interface IJobFilterForm {
   title: FormControl<string | null>;
@@ -77,7 +78,13 @@ export class FilterJobsComponent {
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<FilterJobsComponent>,
-  ) {}
+    @Inject(MAT_DIALOG_DATA) public data: any,
+  ) {
+    this.form.patchValue({
+      ...data,
+      //TODO check for array type
+    });
+  }
 
   close() {
     this.dialogRef.close();

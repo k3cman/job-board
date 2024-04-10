@@ -1,71 +1,144 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {
+  AbstractControl,
+  FormControl,
+  NonNullableFormBuilder,
   ReactiveFormsModule,
-  UntypedFormBuilder,
   Validators,
 } from '@angular/forms';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
-import { JobAdDto } from '../../../types/jobs';
+import { JobAdDto, JobAdStatus } from '../../../types/jobs';
+import {
+  MatChipGrid,
+  MatChipInput,
+  MatChipInputEvent,
+  MatChipRow,
+} from '@angular/material/chips';
+import { NgForOf } from '@angular/common';
+import { MatIcon } from '@angular/material/icon';
+
+interface IJobForm {
+  title: FormControl<string>;
+  description: FormControl<string>;
+  skills: FormControl<string[]>;
+}
 
 @Component({
   selector: 'app-job-form',
   standalone: true,
-  imports: [ReactiveFormsModule, MatFormField, MatInput, MatLabel, MatButton],
+  imports: [
+    ReactiveFormsModule,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    MatButton,
+    MatChipInput,
+    NgForOf,
+    MatChipGrid,
+    MatIcon,
+    MatChipRow,
+  ],
   template: `
-    <form [formGroup]="form" (ngSubmit)="handleSubmit()" class="flex flex-col">
+    <form [formGroup]="form" class="flex flex-col">
       <mat-form-field>
         <mat-label>Title</mat-label>
-        <input matInput formControlName="title" />
+        <input
+          matInput
+          formControlName="title"
+          placeholder="Enter a job title"
+        />
       </mat-form-field>
       <mat-form-field class="example-full-width">
-        <mat-label>description</mat-label>
-        <input matInput formControlName="description" />
+        <mat-label>Description</mat-label>
+        <input
+          matInput
+          formControlName="description"
+          placeholder="Enter a job description"
+        />
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <mat-label>skills</mat-label>
-        <input matInput formControlName="skills" />
+        <mat-label>Skills</mat-label>
+        <mat-chip-grid #chipList formControlName="skills">
+          <mat-chip-row
+            [removable]="true"
+            *ngFor="let chip of skillsControl.value"
+            (click)="removeSkill(chip)"
+          >
+            <div class="flex items-center justify-between">
+              {{ chip }}
+            </div>
+          </mat-chip-row>
+        </mat-chip-grid>
+        <input
+          #chipsInput
+          matInput
+          placeholder="Add skills by typing each one and pressing enter. Click on chip to delete a skill"
+          [matChipInputFor]="chipList"
+          (matChipInputTokenEnd)="addSkill($event); chipsInput.value = ''"
+        />
       </mat-form-field>
 
-      <mat-form-field class="example-full-width">
-        <mat-label>status</mat-label>
-        <input matInput formControlName="status" />
-      </mat-form-field>
-
-      <div footer>
-        <button mat-button (cancel)="cancel.emit()">Cancel</button>
-        <button mat-button type="submit">Submit</button>
+      <div>
+        <button mat-button (click)="handleSubmit('draft')">
+          {{ editMode ? 'Update' : 'Create' }}
+        </button>
+        <button mat-button (click)="handleSubmit('published')">
+          {{ editMode ? 'Update' : 'Create' }} and Publish
+        </button>
       </div>
     </form>
   `,
   styleUrl: './job-form.component.scss',
 })
 export class JobFormComponent {
-  public form = this.fb.group({
-    title: ['', [Validators.required]],
-    description: [''],
-    skills: [''],
-    status: [null],
+  public form = this.fb.group<IJobForm>({
+    title: this.fb.control<string>('', Validators.required),
+    description: this.fb.control<string>('', [
+      Validators.required,
+      Validators.minLength(10),
+    ]),
+    skills: this.fb.control<string[]>([], [Validators.required]),
   });
+
+  public editMode = false;
 
   @Input() set initialValue(value: JobAdDto | undefined) {
     if (value) {
+      this.editMode = true;
       this.form.patchValue({
         ...value,
       });
     }
   }
 
-  @Output() readonly cancel = new EventEmitter<void>();
-  @Output() readonly submitJobAd = new EventEmitter<JobAdDto>();
+  @Output() readonly submitJobAd = new EventEmitter<Partial<JobAdDto>>();
 
-  constructor(private fb: UntypedFormBuilder) {}
+  get skillsControl(): AbstractControl {
+    return this.form.get('skills') as AbstractControl;
+  }
 
-  handleSubmit() {
+  constructor(private fb: NonNullableFormBuilder) {}
+
+  handleSubmit(jobStatus: JobAdStatus) {
     if (this.form.valid) {
-      this.submitJobAd.emit(this.form.getRawValue());
+      this.submitJobAd.emit({
+        ...this.form.getRawValue(),
+        status: jobStatus,
+      });
     }
+  }
+
+  addSkill($event: MatChipInputEvent) {
+    const controlValue = [...this.skillsControl.value];
+    this.skillsControl.patchValue([...controlValue, $event.value]);
+  }
+
+  removeSkill(skill: string) {
+    this.skillsControl.patchValue([
+      ...this.skillsControl.value.filter((e: string) => e !== skill),
+    ]);
   }
 }

@@ -8,10 +8,9 @@ describe('SidebarDialogWrapperComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SidebarDialogWrapperComponent]
-    })
-    .compileComponents();
-    
+      imports: [SidebarDialogWrapperComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(SidebarDialogWrapperComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

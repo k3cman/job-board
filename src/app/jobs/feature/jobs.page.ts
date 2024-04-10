@@ -4,14 +4,15 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditJobDialogComponent } from './edit-job/edit-job.dialog';
 import { CreateJobDialogComponent } from './create-job/create-job.dialog';
 import { JobsStore } from '../store/job.store';
-import {JobAdDto, JobAdStatus} from '../../types/jobs';
+import { JobAdDto } from '../../types/jobs';
 
 @Component({
   template: `
     <div>
       <div class="flex items-center justify-end p-2">
-        <button mat-mini-fab (click)="createJob()">
-          <mat-icon> add_circle </mat-icon>
+        <button mat-stroked-button color="primary" (click)="createJob()">
+          <mat-icon>add</mat-icon>
+          Create Job Ad
         </button>
       </div>
       <table mat-table [dataSource]="(dataSource$ | async) || []">
@@ -48,29 +49,13 @@ import {JobAdDto, JobAdStatus} from '../../types/jobs';
 
             <mat-menu #menu="matMenu">
               <button mat-menu-item (click)="handleStatusChange(element)">
-                {{element.status === 'draft' ? 'Publish Job' : 'Archive Job'}}
+                {{ element.status === 'draft' ? 'Publish Job' : 'Archive Job' }}
               </button>
-              <button mat-menu-item (click)="editJob(element)">
-                Edit Job
-              </button>
+              <button mat-menu-item (click)="editJob(element)">Edit Job</button>
               <button mat-menu-item (click)="deleteJob(element)">
                 Delete Job
               </button>
             </mat-menu>
-<!--            <button-->
-<!--              mat-icon-button-->
-<!--              aria-label="Example icon button with a vertical three dot icon"-->
-<!--              (click)="editJob(element)"-->
-<!--            >-->
-<!--              <mat-icon>edit</mat-icon>-->
-<!--            </button>-->
-<!--            <button-->
-<!--              mat-icon-button-->
-<!--              aria-label="Example icon button with a vertical three dot icon"-->
-<!--              (click)="deleteJob(element)"-->
-<!--            >-->
-<!--              <mat-icon>delete</mat-icon>-->
-<!--            </button>-->
           </td>
         </ng-container>
 
@@ -141,7 +126,7 @@ export class JobsPageComponent implements OnInit {
       });
   }
 
-  handleStatusChange(element:JobAdDto) {
-    console.log(element)
+  handleStatusChange(element: JobAdDto) {
+    console.log(element);
   }
 }

@@ -1,6 +1,6 @@
-import {Component, Input} from '@angular/core';
-import {MatChip, MatChipSet} from "@angular/material/chips";
-import {NgForOf} from "@angular/common";
+import { Component, Input } from '@angular/core';
+import { MatChip, MatChipSet } from '@angular/material/chips';
+import { NgForOf } from '@angular/common';
 
 @Component({
   selector: 'app-job-skills',
@@ -8,18 +8,13 @@ import {NgForOf} from "@angular/common";
   template: `
     <mat-chip-set>
       <mat-chip *ngFor="let skill of skills">
-        {{skill}}
+        {{ skill }}
       </mat-chip>
     </mat-chip-set>
   `,
-  imports: [
-    MatChip,
-    MatChipSet,
-    NgForOf
-  ],
-  styleUrl: './job-skills.component.scss'
+  imports: [MatChip, MatChipSet, NgForOf],
+  styleUrl: './job-skills.component.scss',
 })
 export class JobSkillsComponent {
-  @Input() skills: string[] = []
-
+  @Input() skills: string[] = [];
 }

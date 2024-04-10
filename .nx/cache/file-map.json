@@ -55,11 +55,19 @@
       },
       {
         "file": ".eslintrc.json",
-        "hash": "14645878845883387518"
+        "hash": "1273358472650966553"
       },
       {
         "file": ".gitignore",
-        "hash": "13044518069027839699"
+        "hash": "15523142609672895898"
+      },
+      {
+        "file": ".pretierrc.json",
+        "hash": "11625286717143547956"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "4267668657842554762"
       },
       {
         "file": ".vscode/extensions.json",
@@ -79,23 +87,19 @@
       },
       {
         "file": "angular.json",
-        "hash": "7386548526312497709"
-      },
-      {
-        "file": "db/db.json",
-        "hash": "4940120780682744102"
+        "hash": "640967321014623668"
       },
       {
         "file": "package-lock.json",
-        "hash": "5369964832166173282"
+        "hash": "38336534720401586"
       },
       {
         "file": "package.json",
-        "hash": "2378560617505483638"
+        "hash": "6072320098448491389"
       },
       {
         "file": "src/app/app-routing.module.ts",
-        "hash": "16830438977307292085"
+        "hash": "6808114777949105242"
       },
       {
         "file": "src/app/app.component.scss",
@@ -103,15 +107,15 @@
       },
       {
         "file": "src/app/app.component.spec.ts",
-        "hash": "11319503171480336021"
+        "hash": "8453694449303042559"
       },
       {
         "file": "src/app/app.component.ts",
-        "hash": "10618209820892909270"
+        "hash": "15988655754133329636"
       },
       {
         "file": "src/app/app.module.ts",
-        "hash": "7304865647865143743"
+        "hash": "17520420417078065562"
       },
       {
         "file": "src/app/core/layout/layout/layout.component.scss",
@@ -119,47 +123,55 @@
       },
       {
         "file": "src/app/core/layout/layout/layout.component.spec.ts",
-        "hash": "15809321075366152164"
+        "hash": "11703824369928903315"
       },
       {
         "file": "src/app/core/layout/layout/layout.component.ts",
-        "hash": "14170410493541194274"
+        "hash": "12332436918518076647"
+      },
+      {
+        "file": "src/app/invoices/data-access/invoices.service.ts",
+        "hash": "8541498419826971766"
       },
       {
         "file": "src/app/invoices/feature/invoices-routing.module.ts",
-        "hash": "5079275454388535356"
+        "hash": "9072057819718126263"
       },
       {
         "file": "src/app/invoices/feature/invoices.module.ts",
-        "hash": "80061851868819513"
+        "hash": "16235410877150053849"
       },
       {
         "file": "src/app/invoices/feature/invoices.page.ts",
-        "hash": "18119930472521014432"
+        "hash": "11342638866487443837"
       },
       {
         "file": "src/app/jobs/data-access/jobs.service.ts",
-        "hash": "13601722015048240421"
+        "hash": "13246174588122011325"
       },
       {
         "file": "src/app/jobs/feature/create-job/create-job.dialog.ts",
-        "hash": "3541081370795008412"
+        "hash": "9506839732125160513"
       },
       {
         "file": "src/app/jobs/feature/edit-job/edit-job.dialog.ts",
-        "hash": "2280765329421961455"
+        "hash": "3901104519106573708"
       },
       {
         "file": "src/app/jobs/feature/jobs-routing.module.ts",
-        "hash": "1946533767402878029"
+        "hash": "359440456189366299"
       },
       {
         "file": "src/app/jobs/feature/jobs.module.ts",
-        "hash": "12297556642652480204"
+        "hash": "758382628356857251"
       },
       {
         "file": "src/app/jobs/feature/jobs.page.ts",
-        "hash": "5247015122891681384"
+        "hash": "11467543849575080487"
+      },
+      {
+        "file": "src/app/jobs/store/job.store.ts",
+        "hash": "14936798322614954097"
       },
       {
         "file": "src/app/jobs/ui/job-form/job-form.component.scss",
@@ -167,11 +179,55 @@
       },
       {
         "file": "src/app/jobs/ui/job-form/job-form.component.spec.ts",
-        "hash": "8762926330342018665"
+        "hash": "13788143761450447586"
       },
       {
         "file": "src/app/jobs/ui/job-form/job-form.component.ts",
-        "hash": "13799088180362566089"
+        "hash": "9403558691384952544"
+      },
+      {
+        "file": "src/app/shared/ui/job-skills/job-skills.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/shared/ui/job-skills/job-skills.component.spec.ts",
+        "hash": "16525069747830128083"
+      },
+      {
+        "file": "src/app/shared/ui/job-skills/job-skills.component.ts",
+        "hash": "8304041216641520311"
+      },
+      {
+        "file": "src/app/shared/ui/job-status/job-status.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/shared/ui/job-status/job-status.component.spec.ts",
+        "hash": "12681201221874286579"
+      },
+      {
+        "file": "src/app/shared/ui/job-status/job-status.component.ts",
+        "hash": "17332079595863180929"
+      },
+      {
+        "file": "src/app/shared/ui/sidebar-dialog-wrapper/sidebar-dialog-wrapper.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/shared/ui/sidebar-dialog-wrapper/sidebar-dialog-wrapper.component.spec.ts",
+        "hash": "17155283594358876199"
+      },
+      {
+        "file": "src/app/shared/ui/sidebar-dialog-wrapper/sidebar-dialog-wrapper.component.ts",
+        "hash": "17391461609707199156"
+      },
+      {
+        "file": "src/app/types/invoices.ts",
+        "hash": "9592965064076996188"
+      },
+      {
+        "file": "src/app/types/jobs.ts",
+        "hash": "3857009150921213086"
       },
       {
         "file": "src/assets/.gitkeep",
@@ -183,31 +239,31 @@
       },
       {
         "file": "src/index.html",
-        "hash": "8487014784781753255"
+        "hash": "1169176534883026389"
       },
       {
         "file": "src/main.ts",
-        "hash": "12246588107753938993"
+        "hash": "3259059517603285449"
       },
       {
         "file": "src/styles.scss",
-        "hash": "12313373900188661012"
+        "hash": "11027223877963961951"
       },
       {
         "file": "tailwind.config.js",
-        "hash": "7601031578553540284"
+        "hash": "1953686720069507907"
       },
       {
         "file": "tsconfig.app.json",
-        "hash": "17337579397915052279"
+        "hash": "11674506502668556549"
       },
       {
         "file": "tsconfig.json",
-        "hash": "1649115413602447581"
+        "hash": "4188771536276713134"
       },
       {
         "file": "tsconfig.spec.json",
-        "hash": "15575553540147145788"
+        "hash": "11901043454877211451"
       }
     ]
   }

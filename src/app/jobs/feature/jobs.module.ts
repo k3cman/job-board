@@ -15,14 +15,18 @@ import {
   MatTable,
 } from '@angular/material/table';
 import { MatIcon } from '@angular/material/icon';
-import { MatIconButton, MatMiniFabButton } from '@angular/material/button';
+import {
+  MatButton,
+  MatIconButton,
+  MatMiniFabButton,
+} from '@angular/material/button';
 import { EditJobDialogComponent } from './edit-job/edit-job.dialog';
 import { JobFormComponent } from '../ui/job-form/job-form.component';
 import { CreateJobDialogComponent } from './create-job/create-job.dialog';
-import {JobStatusComponent} from "../../shared/ui/job-status/job-status.component";
-import {JobSkillsComponent} from "../../shared/ui/job-skills/job-skills.component";
-import {SidebarDialogWrapperComponent} from "../../shared/ui/sidebar-dialog-wrapper/sidebar-dialog-wrapper.component";
-import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
+import { JobStatusComponent } from '../../shared/ui/job-status/job-status.component';
+import { JobSkillsComponent } from '../../shared/ui/job-skills/job-skills.component';
+import { SidebarDialogWrapperComponent } from '../../shared/ui/sidebar-dialog-wrapper/sidebar-dialog-wrapper.component';
+import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -54,6 +58,7 @@ import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
     MatMenu,
     MatMenuItem,
     MatMenuTrigger,
+    MatButton,
   ],
 })
 export class JobsModule {}

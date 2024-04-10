@@ -6,7 +6,6 @@ import { EMPTY, Observable, switchMap, tap } from 'rxjs';
 import { InvoicesService } from '../../invoices/data-access/invoices.service';
 import { InvoiceDto } from '../../types/invoices';
 import { ActivatedRoute } from '@angular/router';
-import { KeyValue } from '@angular/common';
 
 interface IJobStore {
   jobs: JobAdDto[];

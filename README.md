@@ -29,4 +29,4 @@ Running tests with coverage `ng test --code-coverage`
 * Service - Transforms DTOs to ViewModels and vice versa
 * Resources - Send http request towards backend
 
-Please note, that Resources are modeled on .net approach of Resources where we can plug and play different resources, my understanding of resource pattern in angular is that in this case we could now create a resource towards real API server and just replace the current Json-server one
+Please note, that Resources are modeled on .net approach of Resources where we can plug and play different resources,My understanding of resource pattern in angular is that in this case we could now create a resource towards real API server and just replace the current Json-server one.

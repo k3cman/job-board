@@ -1,81 +1,50 @@
 {
   "jobs": [
     {
-      "id": "1",
+      "id": 1,
       "title": "Wizard",
       "description": "Conjures spells and potions",
-      "skills": [
-        "magic",
-        "alchemy",
-        "wizardry"
-      ],
+      "skills": ["magic", "alchemy", "wizardry"],
       "status": "published",
       "createdAt": "2024-03-20T09:30:00Z",
       "updatedAt": "2024-03-20T09:30:00Z"
     },
     {
-      "id": "3",
+      "id": 2,
+      "title": "Juggler",
+      "description": "Master of juggling balls and chainsaws",
+      "skills": ["juggling", "entertainment", "coordination"],
+      "status": "draft",
+      "createdAt": "2024-03-22T10:15:00Z",
+      "updatedAt": "2024-03-22T10:15:00Z"
+    },
+    {
+      "id": 3,
       "title": "Chocolate Taster",
       "description": "Indulges in the finest chocolates",
-      "skills": [
-        "tasting",
-        "chocolate",
-        "discernment"
-      ],
+      "skills": ["tasting", "chocolate", "discernment"],
       "status": "archived",
       "createdAt": "2024-03-24T14:00:00Z",
       "updatedAt": "2024-03-24T14:00:00Z"
     },
     {
-      "id": "f289",
-      "title": "Nemanja",
-      "description": "Kecman Nemanja",
-      "skills": [
-        "test",
-        "skill",
-        "first",
-        "",
-        "second"
-      ],
+      "id": 4,
+      "title": "Nap Consultant",
+      "description": "Expert in optimizing nap schedules",
+      "skills": ["napping", "consulting", "rest"],
       "status": "published",
-      "updatedAt": "2024-04-12T15:55:46.750Z",
-      "createdAt": "2024-04-12T15:55:46.750Z"
+      "createdAt": "2024-03-25T08:45:00Z",
+      "updatedAt": "2024-03-25T08:45:00Z"
     },
     {
-      "id": "c532",
-      "title": "New Job Ad",
-      "description": "Description of Job Ad",
-      "skills": [],
-      "status": "published",
-      "updatedAt": "2024-04-12T18:21:27.753Z",
-      "createdAt": "2024-04-12T18:21:27.753Z"
-    },
-    {
-      "id": "e1f7",
-      "title": "123",
-      "description": "123123123123123123",
-      "skills": [],
-      "status": "published",
-      "updatedAt": "2024-04-12T22:41:35.396Z",
-      "createdAt": "2024-04-12T22:41:35.396Z"
+      "id": 5,
+      "title": "Banana Peel Slip Tester",
+      "description": "Tests the slipperiness of banana peels",
+      "skills": ["testing", "banana", "balance"],
+      "status": "draft",
+      "createdAt": "2024-03-25T12:00:00Z",
+      "updatedAt": "2024-03-25T12:00:00Z"
     }
   ],
-  "invoices": [
-    {
-      "id": "b272",
-      "jobAdId": "c532",
-      "amount": 20,
-      "dueDate": "2024-05-27T18:21:27.769Z",
-      "createdAt": "2024-04-12T18:21:27.770Z",
-      "updatedAt": "2024-04-12T18:21:27.770Z"
-    },
-    {
-      "id": "c294",
-      "jobAdId": "e1f7",
-      "amount": 50,
-      "dueDate": "2024-05-27T22:41:35.418Z",
-      "createdAt": "2024-04-12T22:41:35.418Z",
-      "updatedAt": "2024-04-12T22:41:35.418Z"
-    }
-  ]
+  "invoices":  []
 }

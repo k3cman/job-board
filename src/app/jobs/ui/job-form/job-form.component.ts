@@ -3,6 +3,7 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnDestroy,
   Output,
 } from '@angular/core';
 import {
@@ -30,6 +31,7 @@ import {
 import { NgForOf, NgIf } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { JobViewModel } from '../../data-access/jobs';
+import { debounce, debounceTime, Subject, takeUntil } from 'rxjs';
 
 interface IJobForm {
   title: FormControl<string>;
@@ -66,6 +68,9 @@ interface IJobForm {
         />
         <mat-error *ngIf="form.get('title')?.hasError('required')"
           >Please provide a Job Title</mat-error
+        >
+        <mat-error *ngIf="form.get('title')?.hasError('sameName')"
+          >Job with that Title already exists</mat-error
         >
       </mat-form-field>
       <mat-form-field class="example-full-width">
@@ -122,7 +127,8 @@ interface IJobForm {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class JobFormComponent {
+export class JobFormComponent implements OnDestroy {
+  private _destroy$ = new Subject<void>();
   public editMode = false;
   public form = this.fb.group<IJobForm>({
     title: this.fb.control<string>('', Validators.required),
@@ -132,6 +138,8 @@ export class JobFormComponent {
     ]),
     skills: this.fb.control<string[]>([]),
   });
+
+  @Input() existingNames!: string[] | null;
 
   @Input() set initialValue(value: JobViewModel | undefined) {
     if (value) {
@@ -148,7 +156,9 @@ export class JobFormComponent {
     return this.form.get('skills') as AbstractControl;
   }
 
-  constructor(private fb: NonNullableFormBuilder) {}
+  constructor(private fb: NonNullableFormBuilder) {
+    this.listenToTitleChanges();
+  }
 
   handleSubmit(jobStatus: JobAdStatus) {
     if (this.form.valid) {
@@ -171,5 +181,23 @@ export class JobFormComponent {
     this.skillsControl.patchValue([
       ...this.skillsControl.value.filter((e: string) => e !== skill),
     ]);
+  }
+
+  private listenToTitleChanges() {
+    this.form
+      .get('title')
+      ?.valueChanges.pipe(debounceTime(300), takeUntil(this._destroy$))
+      .subscribe((title) => {
+        if (this.existingNames && this.existingNames.includes(title)) {
+          this.form.get('title')?.setErrors({ sameName: true });
+        } else {
+          this.form.get('title')?.setErrors(null);
+        }
+      });
+  }
+
+  ngOnDestroy() {
+    this._destroy$.next();
+    this._destroy$.complete();
   }
 }

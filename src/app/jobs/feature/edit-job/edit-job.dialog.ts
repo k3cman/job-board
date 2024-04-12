@@ -14,6 +14,7 @@ import { JobsStore } from '../../store/job.store';
     <app-sidebar-dialog-wrapper title="Update Job Ad" (closeDialog)="close()">
       <app-job-form
         [initialValue]="data"
+        [existingNames]="existingNames$ | async"
         (submitJobAd)="handleSubmit($event)"
       ></app-job-form>
     </app-sidebar-dialog-wrapper>
@@ -22,6 +23,7 @@ import { JobsStore } from '../../store/job.store';
 })
 export class EditJobDialogComponent implements OnDestroy {
   private _destroy$ = new Subject<void>();
+  existingNames$ = this.store.jobNames$;
   constructor(
     private dialogRef: MatDialogRef<EditJobDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: JobViewModel,

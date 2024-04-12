@@ -22,6 +22,7 @@ export class JobsStore extends ComponentStore<IJobStore> {
   loading$ = this.select((state) => state.loading);
   filters$ = this.select((state) => state.filters);
   actionInProgress$ = this.select((state) => state.actionInProgress);
+  jobNames$ = this.select((state) => state.jobs.map((job) => job.title));
 
   fetch = this.effect((filter$: Observable<IFilter>) =>
     filter$.pipe(

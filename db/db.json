@@ -49,6 +49,15 @@
       "status": "published",
       "updatedAt": "2024-04-12T18:21:27.753Z",
       "createdAt": "2024-04-12T18:21:27.753Z"
+    },
+    {
+      "id": "e1f7",
+      "title": "123",
+      "description": "123123123123123123",
+      "skills": [],
+      "status": "published",
+      "updatedAt": "2024-04-12T22:41:35.396Z",
+      "createdAt": "2024-04-12T22:41:35.396Z"
     }
   ],
   "invoices": [
@@ -59,6 +68,14 @@
       "dueDate": "2024-05-27T18:21:27.769Z",
       "createdAt": "2024-04-12T18:21:27.770Z",
       "updatedAt": "2024-04-12T18:21:27.770Z"
+    },
+    {
+      "id": "c294",
+      "jobAdId": "e1f7",
+      "amount": 50,
+      "dueDate": "2024-05-27T22:41:35.418Z",
+      "createdAt": "2024-04-12T22:41:35.418Z",
+      "updatedAt": "2024-04-12T22:41:35.418Z"
     }
   ]
 }

@@ -7,13 +7,17 @@ import { JobsStore } from '../../store/job.store';
 @Component({
   template: `
     <app-sidebar-dialog-wrapper title="Create Job Ad" (closeDialog)="cancel()">
-      <app-job-form (submitJobAd)="createJobAd($event)"></app-job-form>
+      <app-job-form
+        (submitJobAd)="createJobAd($event)"
+        [existingNames]="jobNames$ | async"
+      ></app-job-form>
     </app-sidebar-dialog-wrapper>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateJobDialogComponent implements OnDestroy {
   private _destroy$ = new Subject<void>();
+  jobNames$ = this.store.jobNames$;
   constructor(
     private dialogRef: MatDialogRef<CreateJobDialogComponent>,
     private store: JobsStore,

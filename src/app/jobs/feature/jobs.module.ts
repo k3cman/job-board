@@ -39,6 +39,9 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatOption, MatSelect } from '@angular/material/select';
+import { PageHeadComponent } from '../../shared/ui/page-head/page-head.component';
+import { JobsTableComponent } from '../ui/jobs-table/jobs-table.component';
+import { FilterBarComponent } from '../../shared/ui/filter-bar/filter-bar.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +85,9 @@ import { MatOption, MatSelect } from '@angular/material/select';
     MatOption,
     MatChip,
     MatChipSet,
+    PageHeadComponent,
+    JobsTableComponent,
+    FilterBarComponent,
   ],
 })
 export class JobsModule {}

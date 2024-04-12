@@ -1,19 +1,6 @@
 {
   "jobs": [
     {
-      "id": "1",
-      "title": "Wizard",
-      "description": "Conjures spells and potions",
-      "skills": [
-        "magic",
-        "alchemy",
-        "wizardry"
-      ],
-      "status": "published",
-      "createdAt": "2024-03-20T09:30:00Z",
-      "updatedAt": "2024-03-20T09:30:00Z"
-    },
-    {
       "id": "2",
       "title": "Juggler",
       "description": "Master of juggling balls and chainsaws",
@@ -22,9 +9,9 @@
         "entertainment",
         "coordination"
       ],
-      "status": "published",
-      "createdAt": "2024-03-22T10:15:00Z",
-      "updatedAt": "2024-03-22T10:15:00Z"
+      "status": "archived",
+      "updatedAt": "2024-04-12T12:08:38.148Z",
+      "createdAt": "2024-03-22T10:15:00Z"
     },
     {
       "id": "3",
@@ -48,9 +35,9 @@
         "consulting",
         "rest"
       ],
-      "status": "draft",
-      "createdAt": "2024-03-25T08:45:00Z",
-      "updatedAt": "2024-03-25T08:45:00Z"
+      "status": "published",
+      "updatedAt": "2024-04-12T12:08:44.092Z",
+      "createdAt": "2024-03-25T08:45:00Z"
     },
     {
       "id": "6836",
@@ -108,8 +95,8 @@
       "title": "askjdlasjldj",
       "description": "Nemanja Kecman",
       "skills": [],
-      "status": "published",
-      "updatedAt": "2024-04-12T10:44:19.178Z",
+      "status": "archived",
+      "updatedAt": "2024-04-12T11:49:28.010Z",
       "createdAt": "2024-04-12T10:44:19.178Z"
     },
     {
@@ -208,6 +195,14 @@
       "dueDate": "2024-05-27T10:44:19.277Z",
       "createdAt": "2024-04-12T10:44:19.277Z",
       "updatedAt": "2024-04-12T10:44:19.277Z"
+    },
+    {
+      "id": "86a3",
+      "jobAdId": "4",
+      "amount": 0,
+      "dueDate": "2024-05-27T12:08:44.101Z",
+      "createdAt": "2024-04-12T12:08:44.101Z",
+      "updatedAt": "2024-04-12T12:08:44.101Z"
     }
   ]
 }

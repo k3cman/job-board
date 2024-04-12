@@ -16,6 +16,8 @@ import {
 } from '@angular/material/table';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
+import { PageHeadComponent } from '../../shared/ui/page-head/page-head.component';
+import { InvoicesTableComponent } from '../ui/invoices-table/invoices-table.component';
 
 @NgModule({
   declarations: [InvoicesPageComponent],
@@ -34,6 +36,8 @@ import { MatIcon } from '@angular/material/icon';
     MatRowDef,
     MatButton,
     MatIcon,
+    PageHeadComponent,
+    InvoicesTableComponent,
   ],
 })
 export class InvoicesModule {}

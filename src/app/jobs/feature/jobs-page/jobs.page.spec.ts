@@ -19,7 +19,7 @@ import { CreateJobDialogComponent } from '../create-job/create-job.dialog';
 import { JobsBuilder } from '../../data-access/jobs.builder';
 import { EditJobDialogComponent } from '../edit-job/edit-job.dialog';
 import { ConfirmDialogComponent } from '@shared/ui/confirm-dialog/confirm-dialog.component';
-import { FilterJobsComponent } from '../filter/filter-jobs/filter-jobs.component';
+import { FilterJobsComponent } from '../filter-jobs/filter-jobs.component';
 
 describe('JobsPageComponent', function () {
   let component: JobsPageComponent;

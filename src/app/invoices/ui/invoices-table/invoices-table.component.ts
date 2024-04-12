@@ -64,7 +64,6 @@ import { InvoiceViewModel } from '../../data-access/invoices';
       <tr mat-row *matRowDef="let row; columns: columns"></tr>
     </table>
   `,
-  styleUrl: './invoices-table.component.scss',
 })
 export class InvoicesTableComponent {
   @Input() columns!: string[];

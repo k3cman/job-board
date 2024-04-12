@@ -26,7 +26,7 @@ import { CreateJobDialogComponent } from './create-job/create-job.dialog';
 import { JobSkillsComponent } from '@shared/ui/job-skills/job-skills.component';
 import { SidebarDialogWrapperComponent } from '@shared/ui/sidebar-dialog-wrapper/sidebar-dialog-wrapper.component';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
-import { FilterJobsComponent } from './filter/filter-jobs/filter-jobs.component';
+import { FilterJobsComponent } from './filter-jobs/filter-jobs.component';
 import {
   MatChip,
   MatChipGrid,

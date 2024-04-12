@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditJobDialogComponent } from '../edit-job/edit-job.dialog';
 import { CreateJobDialogComponent } from '../create-job/create-job.dialog';
 import { JobsStore } from '../../store/job.store';
-import { FilterJobsComponent } from '../filter/filter-jobs/filter-jobs.component';
+import { FilterJobsComponent } from '../filter-jobs/filter-jobs.component';
 import { Router } from '@angular/router';
 import {
   combineLatest,

@@ -18,6 +18,7 @@ import {
 } from '@angular/material/chips';
 import { NgForOf } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
+import { JobViewModel } from '../../data-access/jobs';
 
 interface IJobForm {
   title: FormControl<string>;
@@ -109,7 +110,7 @@ export class JobFormComponent {
 
   public editMode = false;
 
-  @Input() set initialValue(value: JobAdDto | undefined) {
+  @Input() set initialValue(value: JobViewModel | undefined) {
     if (value) {
       this.editMode = true;
       this.form.patchValue({

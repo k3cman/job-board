@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { JobsService } from '../../data-access/jobs.service';
-import { JobAdDto } from '../../../types/jobs';
+import { JobViewModel } from '../../data-access/jobs';
 
 @Component({
   template: `
@@ -21,9 +21,9 @@ export class CreateJobDialogComponent {
     this.dialogRef.close();
   }
 
-  createJobAd($event: Partial<JobAdDto>) {
+  createJobAd($event: Partial<JobViewModel>) {
     console.log($event);
-    this.service.createJob($event as JobAdDto).subscribe((data) => {
+    this.service.createJob($event as JobViewModel).subscribe((data) => {
       this.dialogRef.close(data);
     });
   }

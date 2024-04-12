@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { InvoicesService } from '../data-access/invoices.service';
 import { Observable } from 'rxjs';
 import { InvoiceDto } from '../../types/invoices';
 import { InvoicesStore } from '../store/invoices.store';
+import { InvoiceViewModel } from '../data-access/invoices';
 
 @Component({
   template: `
@@ -14,6 +14,13 @@ import { InvoicesStore } from '../store/invoices.store';
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef>ID</th>
           <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="jobName">
+          <th mat-header-cell *matHeaderCellDef>jobName</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.jobName }}
+          </td>
         </ng-container>
 
         <ng-container matColumnDef="dueDate">
@@ -40,12 +47,7 @@ import { InvoicesStore } from '../store/invoices.store';
   providers: [InvoicesStore],
 })
 export class InvoicesPageComponent {
-  data$: Observable<InvoiceDto[]> = this.service.getInvoices();
-  displayedColumns = ['id', 'dueDate', 'amount'];
-  constructor(
-    private service: InvoicesService,
-    private store: InvoicesStore,
-  ) {
-    this.store.fetch();
-  }
+  data$: Observable<InvoiceViewModel[]> = this.store.data$;
+  displayedColumns = ['id', 'jobName', 'dueDate', 'amount'];
+  constructor(private store: InvoicesStore) {}
 }

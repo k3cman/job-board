@@ -1,23 +1,28 @@
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
+import { KeyValue } from '@angular/common';
+import { IDeleteResponse } from '../../types/delete-response';
 
 export interface IBaseRepository<T> {
-  getAll(): Observable<T[]>;
+  getAll(filter: any): Observable<T[]>;
   getById(id: string): Observable<T>;
   create(payload: T): Observable<T>;
   put(id: string, payload: T): Observable<T>;
-  delete(id: string): Observable<{ id: string; isTrusted: boolean }>;
+  delete(id: string): Observable<IDeleteResponse>;
 }
 
 export abstract class BaseRepository<T> implements IBaseRepository<T> {
   endpoint = '';
   private http: HttpClient;
-  protected constructor(http: HttpClient) {
+  protected constructor(http: HttpClient, endpoint: string) {
     this.http = http;
+    this.endpoint = environment.apiUrl + endpoint;
   }
 
-  getAll(): Observable<T[]> {
-    return this.http.get<T[]>(this.endpoint);
+  getAll(filter: any): Observable<T[]> {
+    const params = new HttpParams().appendAll(filter as any);
+    return this.http.get<T[]>(this.endpoint, { params });
   }
 
   getById(id: string): Observable<T> {
@@ -32,9 +37,7 @@ export abstract class BaseRepository<T> implements IBaseRepository<T> {
     return this.http.put<T>(`${this.endpoint}/${id}`, payload);
   }
 
-  delete(id: string): Observable<{ id: string; isTrusted: boolean }> {
-    return this.http.delete<{ id: string; isTrusted: boolean }>(
-      `${this.endpoint}/${id}`,
-    );
+  delete(id: string): Observable<IDeleteResponse> {
+    return this.http.delete<IDeleteResponse>(`${this.endpoint}/${id}`);
   }
 }

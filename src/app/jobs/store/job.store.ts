@@ -6,9 +6,11 @@ import { EMPTY, Observable, switchMap, tap } from 'rxjs';
 import { InvoicesService } from '../../invoices/data-access/invoices.service';
 import { InvoiceDto } from '../../types/invoices';
 import { ActivatedRoute } from '@angular/router';
+import { IDeleteResponse } from '../../types/delete-response';
+import { JobViewModel } from '../data-access/jobs';
 
 interface IJobStore {
-  jobs: JobAdDto[];
+  jobs: JobViewModel[];
   filters: any;
   loading: boolean;
 }
@@ -34,13 +36,13 @@ export class JobsStore extends ComponentStore<IJobStore> {
     ),
   );
 
-  addJobAd = this.effect((job: Observable<JobAdDto>) => {
+  addJobAd = this.effect((job: Observable<JobViewModel>) => {
     return job.pipe(
-      switchMap((job: JobAdDto) => {
+      switchMap((job: JobViewModel) => {
         this.updateJobs(job);
         console.log(job);
         if (job.status === 'published') {
-          return this.createInvoiceForPublishedJob(job);
+          return this.createInvoiceForPublishedJob(job.id);
         } else {
           return EMPTY;
         }
@@ -60,28 +62,26 @@ export class JobsStore extends ComponentStore<IJobStore> {
     );
   });
 
-  deleteJobAd = this.effect(
-    (response: Observable<{ id: string; isTrusted: boolean }>) => {
-      return response.pipe(
-        switchMap(({ id }) => {
-          this.removeJob(id);
-          return this.invoiceService.getInvoiceByJobId(id);
-        }),
-        switchMap((invoice: InvoiceDto | null) => {
-          if (invoice) {
-            return this.invoiceService.deleteInvoice(invoice.id.toString());
-          }
-          return EMPTY;
-        }),
-      );
-    },
-  );
+  deleteJobAd = this.effect((response: Observable<IDeleteResponse>) => {
+    return response.pipe(
+      switchMap(({ id }) => {
+        this.removeJob(id);
+        return this.invoiceService.getInvoiceByJobId(id);
+      }),
+      switchMap((invoice: InvoiceDto | null) => {
+        if (invoice) {
+          return this.invoiceService.deleteInvoice(invoice.id.toString());
+        }
+        return EMPTY;
+      }),
+    );
+  });
 
-  updateJob = this.effect((job: Observable<JobAdDto>) => {
+  updateJob = this.effect((job: Observable<JobViewModel>) => {
     return job.pipe(
       switchMap((job) => {
         if (job.status === 'published') {
-          return this.createInvoiceForPublishedJob(job);
+          return this.createInvoiceForPublishedJob(job.id);
         } else {
           return EMPTY;
         }
@@ -89,22 +89,22 @@ export class JobsStore extends ComponentStore<IJobStore> {
     );
   });
 
-  publishJob = this.effect((job: Observable<JobAdDto>) => {
+  publishJob = this.effect((job: Observable<JobViewModel>) => {
     return job.pipe(
-      switchMap((jobAd) => {
+      switchMap((jobAd: JobViewModel) => {
         return this.jobService.updateJob({
           ...jobAd,
           status: 'published',
         });
       }),
-      switchMap((job: JobAdDto) => {
+      switchMap((job: JobViewModel) => {
         this.updateJobAd(job);
-        return this.createInvoiceForPublishedJob(job);
+        return this.createInvoiceForPublishedJob(job.id);
       }),
     );
   });
 
-  archiveJob = this.effect((job: Observable<JobAdDto>) => {
+  archiveJob = this.effect((job: Observable<JobViewModel>) => {
     return job.pipe(
       switchMap((jobAd) => {
         return this.jobService
@@ -121,12 +121,12 @@ export class JobsStore extends ComponentStore<IJobStore> {
     );
   });
 
-  updateJobAd = this.updater((state, job: JobAdDto) => ({
+  updateJobAd = this.updater((state, job: JobViewModel) => ({
     ...state,
     jobs: state.jobs.map((e) => (e.id === job.id ? job : e)),
   }));
 
-  updateJobs = this.updater((state, job: JobAdDto) => ({
+  updateJobs = this.updater((state, job: JobViewModel) => ({
     ...state,
     jobs: [...state.jobs, job],
   }));
@@ -148,7 +148,7 @@ export class JobsStore extends ComponentStore<IJobStore> {
     });
   }
 
-  private createInvoiceForPublishedJob(jobAd: JobAdDto) {
-    return this.invoiceService.createInvoiceForJob(jobAd.id.toString());
+  private createInvoiceForPublishedJob(id: string | number) {
+    return this.invoiceService.createInvoiceForJob(id.toString());
   }
 }

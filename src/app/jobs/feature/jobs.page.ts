@@ -9,6 +9,7 @@ import { FilterJobsComponent } from './filter/filter-jobs/filter-jobs.component'
 import { Router } from '@angular/router';
 import { combineLatest, filter, Subject, takeUntil } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { JobViewModel } from '../data-access/jobs';
 
 @Component({
   template: `
@@ -125,13 +126,13 @@ export class JobsPageComponent implements OnDestroy {
     private snackBar: MatSnackBar,
   ) {}
 
-  deleteJob(element: JobAdDto) {
+  deleteJob(element: JobViewModel) {
     this.jobsService.deleteJob(element.id).subscribe((data) => {
       this.store.deleteJobAd(data);
     });
   }
 
-  editJob(element: JobAdDto) {
+  editJob(element: JobViewModel) {
     this.dialog
       .open(EditJobDialogComponent, {
         height: '100vh',
@@ -147,7 +148,7 @@ export class JobsPageComponent implements OnDestroy {
         takeUntil(this._destroy$),
         filter((data) => !!data),
       )
-      .subscribe((data: JobAdDto) => {
+      .subscribe((data: JobViewModel) => {
         this.store.updateJob(data);
         this.snackBar.open(data.title + 'Job updated successfully');
       });
@@ -175,7 +176,7 @@ export class JobsPageComponent implements OnDestroy {
       });
   }
 
-  handleStatusChange(element: JobAdDto) {
+  handleStatusChange(element: JobViewModel) {
     if (element.status === 'draft') {
       this.store.publishJob(element);
     } else {

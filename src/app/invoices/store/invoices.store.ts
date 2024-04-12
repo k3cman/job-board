@@ -3,38 +3,37 @@ import { ComponentStore } from '@ngrx/component-store';
 import { InvoiceDto } from '../../types/invoices';
 import { InvoicesService } from '../data-access/invoices.service';
 import { JobsService } from '../../jobs/data-access/jobs.service';
-import { map, mergeMap, switchMap } from 'rxjs';
+import { Observable, switchMap, tap } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { InvoiceViewModel } from '../data-access/invoices';
 
 @Injectable()
-export class InvoicesStore extends ComponentStore<InvoiceDto[]> {
+export class InvoicesStore extends ComponentStore<InvoiceViewModel[]> {
   data$ = this.select((state) => state);
   constructor(
     private invoiceService: InvoicesService,
     private jobsService: JobsService,
+    private activatedRoute: ActivatedRoute,
   ) {
     super([]);
   }
 
-  fetch = this.effect(() => {
-    return this.invoiceService.getInvoices().pipe(
-      mergeMap((invoices) => {
-        console.log();
-        return this.jobsService
-          .getJobs({
-            // id: {
-            //   in: invoices
-            //     .map((i) => i.jobAdId)
-            //     .filter((e) => !!e)
-            //     .toString(),
-            // },
-          })
-          .pipe(
-            map((data) => {
-              console.log(data);
-              console.log(invoices);
-              return data;
-            }),
-          );
+  fetch = this.effect((params: Observable<any>) => {
+    return params.pipe(
+      switchMap((params) => {
+        return this.invoiceService.getInvoices(params).pipe(
+          tap((invoices) => {
+            this.setState(invoices);
+          }),
+        );
+      }),
+    );
+  });
+
+  onFilterChange = this.effect(() => {
+    return this.activatedRoute.queryParams.pipe(
+      tap((params) => {
+        this.fetch(params);
       }),
     );
   });

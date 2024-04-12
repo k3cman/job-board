@@ -8,6 +8,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { JobAdDto } from '../../../types/jobs';
 import { JobsService } from '../../data-access/jobs.service';
 import { Subject, takeUntil } from 'rxjs';
+import { JobViewModel } from '../../data-access/jobs';
 
 @Component({
   template: `
@@ -24,7 +25,7 @@ export class EditJobDialogComponent implements OnDestroy {
   private _destroy$ = new Subject<void>();
   constructor(
     private dialogRef: MatDialogRef<EditJobDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: JobAdDto,
+    @Inject(MAT_DIALOG_DATA) public data: JobViewModel,
     private service: JobsService,
   ) {}
 
@@ -32,7 +33,7 @@ export class EditJobDialogComponent implements OnDestroy {
     this.dialogRef.close();
   }
 
-  handleSubmit(updatedJob: Partial<JobAdDto>) {
+  handleSubmit(updatedJob: Partial<JobViewModel>) {
     const payload = { ...this.data, ...updatedJob };
     this.service
       .updateJob(payload)

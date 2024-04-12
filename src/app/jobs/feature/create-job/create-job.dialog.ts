@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { JobsService } from '../../data-access/jobs.service';
 import { JobViewModel } from '../../data-access/jobs';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   template: `
@@ -11,7 +12,8 @@ import { JobViewModel } from '../../data-access/jobs';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CreateJobDialogComponent {
+export class CreateJobDialogComponent implements OnDestroy {
+  private _destroy$ = new Subject<void>();
   constructor(
     private dialogRef: MatDialogRef<CreateJobDialogComponent>,
     private service: JobsService,
@@ -22,9 +24,16 @@ export class CreateJobDialogComponent {
   }
 
   createJobAd($event: Partial<JobViewModel>) {
-    console.log($event);
-    this.service.createJob($event as JobViewModel).subscribe((data) => {
-      this.dialogRef.close(data);
-    });
+    this.service
+      .createJob($event as JobViewModel)
+      .pipe(takeUntil(this._destroy$))
+      .subscribe((data) => {
+        this.dialogRef.close(data);
+      });
+  }
+
+  ngOnDestroy() {
+    this._destroy$.next();
+    this._destroy$.complete();
   }
 }

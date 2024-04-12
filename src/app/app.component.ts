@@ -7,8 +7,5 @@ import { Component } from '@angular/core';
       <router-outlet />
     </app-layout>
   `,
-  styleUrl: './app.component.scss',
 })
-export class AppComponent {
-  title = 'job-board';
-}
+export class AppComponent {}

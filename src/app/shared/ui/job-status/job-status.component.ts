@@ -16,7 +16,6 @@ import { UpperCasePipe } from '@angular/common';
       {{ status | uppercase }}
     </div>
   `,
-  styleUrl: './job-status.component.scss',
 })
 export class JobStatusComponent {
   statusColors = {
@@ -26,10 +25,3 @@ export class JobStatusComponent {
   };
   @Input() status!: JobAdStatus;
 }
-
-// <div
-//   [class]="
-// 'w-24 h-3/4 flex items-center justify-center p-2 border rounded' +
-// statusColors[status]
-// "
-// >

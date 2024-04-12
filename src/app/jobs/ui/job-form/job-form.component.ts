@@ -123,6 +123,7 @@ interface IJobForm {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JobFormComponent {
+  public editMode = false;
   public form = this.fb.group<IJobForm>({
     title: this.fb.control<string>('', Validators.required),
     description: this.fb.control<string>('', [
@@ -132,7 +133,6 @@ export class JobFormComponent {
     skills: this.fb.control<string[]>([]),
   });
 
-  public editMode = false;
 
   @Input() set initialValue(value: JobViewModel | undefined) {
     if (value) {

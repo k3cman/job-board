@@ -99,7 +99,6 @@ import { NgIf } from '@angular/common';
     MatMenuTrigger,
     NgIf,
   ],
-  styleUrl: './jobs-table.component.scss',
 })
 export class JobsTableComponent {
   @Input() columns!: string[];

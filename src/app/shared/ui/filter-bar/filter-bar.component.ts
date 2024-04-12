@@ -23,7 +23,6 @@ import { IFilter } from '../../../types/filter';
       </mat-chip-row>
     </ng-container>
   `,
-  styleUrl: './filter-bar.component.scss',
 })
 export class FilterBarComponent {
   @Input() filters!: IFilter;

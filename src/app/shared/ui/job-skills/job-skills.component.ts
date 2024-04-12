@@ -13,7 +13,6 @@ import { NgForOf } from '@angular/common';
     </mat-chip-set>
   `,
   imports: [MatChip, MatChipSet, NgForOf],
-  styleUrl: './job-skills.component.scss',
 })
 export class JobSkillsComponent {
   @Input() skills: string[] = [];

@@ -46,6 +46,7 @@ import {
   MatProgressSpinner,
   MatProgressSpinnerModule,
 } from '@angular/material/progress-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [

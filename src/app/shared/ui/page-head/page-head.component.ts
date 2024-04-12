@@ -32,7 +32,6 @@ import { NgIf } from '@angular/common';
       </div>
     </div>
   `,
-  styleUrl: './page-head.component.scss',
 })
 export class PageHeadComponent {
   @Input() pageName = '';

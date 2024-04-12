@@ -38,6 +38,6 @@ export abstract class BaseRepository<T> implements IBaseRepository<T> {
   }
 
   delete(id: string): Observable<IDeleteResponse> {
-    return this.http.delete<IDeleteResponse>(`${this.endpoint}/${+id}`);
+    return this.http.delete<IDeleteResponse>(`${this.endpoint}/${id}`);
   }
 }

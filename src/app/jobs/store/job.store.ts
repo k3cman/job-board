@@ -23,8 +23,8 @@ export class JobsStore extends ComponentStore<IJobStore> {
   filters$ = this.select((state) => state.filters);
   actionInProgress$ = this.select((state) => state.actionInProgress);
 
-  fetch = this.effect((filter: Observable<IFilter>) =>
-    filter.pipe(
+  fetch = this.effect((filter$: Observable<IFilter>) =>
+    filter$.pipe(
       switchMap((filter) => {
         return this.jobService.getJobs(filter).pipe(
           tap((data) => {
@@ -51,8 +51,6 @@ export class JobsStore extends ComponentStore<IJobStore> {
     );
   });
 
-  // Create
-
   createJobAd = this.effect((job$: Observable<Partial<JobViewModel>>) => {
     return job$.pipe(
       switchMap((job) => {
@@ -70,7 +68,6 @@ export class JobsStore extends ComponentStore<IJobStore> {
     );
   });
 
-  // Update
   editJob = this.effect((job$: Observable<JobViewModel>) => {
     return job$.pipe(
       switchMap((job) => {
@@ -88,8 +85,8 @@ export class JobsStore extends ComponentStore<IJobStore> {
     );
   });
 
-  publishJob = this.effect((job: Observable<JobViewModel>) => {
-    return job.pipe(
+  publishJob = this.effect((job$: Observable<JobViewModel>) => {
+    return job$.pipe(
       switchMap((jobAd: JobViewModel) => {
         return this.jobService.updateJob({
           ...jobAd,
@@ -103,8 +100,8 @@ export class JobsStore extends ComponentStore<IJobStore> {
     );
   });
 
-  archiveJob = this.effect((job: Observable<JobViewModel>) => {
-    return job.pipe(
+  archiveJob = this.effect((job$: Observable<JobViewModel>) => {
+    return job$.pipe(
       switchMap((jobAd) => {
         return this.jobService
           .updateJob({
@@ -119,8 +116,6 @@ export class JobsStore extends ComponentStore<IJobStore> {
       }),
     );
   });
-
-  // Delete
 
   deleteJob = this.effect((job$: Observable<JobViewModel>) => {
     return job$.pipe(
@@ -137,8 +132,8 @@ export class JobsStore extends ComponentStore<IJobStore> {
     );
   });
 
-  createInvoice = this.effect((job: Observable<JobViewModel>) => {
-    return job.pipe(
+  createInvoice = this.effect((job$: Observable<JobViewModel>) => {
+    return job$.pipe(
       switchMap((one) => {
         return iif(
           () => one.status === 'published',
@@ -149,14 +144,16 @@ export class JobsStore extends ComponentStore<IJobStore> {
     );
   });
 
-  updateJobAd = this.updater((state, job: JobViewModel) => ({
-    ...state,
-    jobs: state.jobs.map((e) => (e.id === job.id ? job : e)),
-  }));
-
   updateJobs = this.updater((state, job: JobViewModel) => ({
     ...state,
     jobs: [...state.jobs, job],
+  }));
+
+  updateJobAd = this.updater((state, job: JobViewModel) => ({
+    ...state,
+    jobs: state.jobs.map((newJob: JobViewModel) =>
+      newJob.id === job.id ? job : newJob,
+    ),
   }));
 
   removeJob = this.updater((state, id: string) => ({

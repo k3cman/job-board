@@ -72,7 +72,10 @@ export class JobsPageComponent implements OnDestroy {
       )
       .subscribe(() => {
         this.store.deleteJob(element);
-        this.snackBar.open(element.title + 'deleted successfully');
+        this.snackBar.open(element.title + ' deleted successfully', undefined, {
+          duration: 2000,
+          panelClass: ['mat-toolbar', 'mat-warn'],
+        });
       });
   }
 

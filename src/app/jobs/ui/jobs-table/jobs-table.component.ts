@@ -17,6 +17,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatIconButton } from '@angular/material/button';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { JobViewModel } from '../../data-access/jobs';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-jobs-table',
@@ -57,7 +58,11 @@ import { JobViewModel } from '../../data-access/jobs';
           </button>
 
           <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="statusChange.emit(element)">
+            <button
+              mat-menu-item
+              (click)="statusChange.emit(element)"
+              *ngIf="element.status !== 'archived'"
+            >
               {{ element.status === 'draft' ? 'Publish Job' : 'Archive Job' }}
             </button>
             <button mat-menu-item (click)="editJob.emit(element)">
@@ -92,6 +97,7 @@ import { JobViewModel } from '../../data-access/jobs';
     MatTable,
     MatHeaderCellDef,
     MatMenuTrigger,
+    NgIf,
   ],
   styleUrl: './jobs-table.component.scss',
 })

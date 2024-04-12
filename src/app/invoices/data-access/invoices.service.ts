@@ -31,12 +31,19 @@ export class InvoicesService {
   getInvoices(filter: IFilter): Observable<InvoiceViewModel[]> {
     return this.repository.getAll(filter).pipe(
       mergeMap((invoices: InvoiceDto[]) => {
+        if (!invoices.length) {
+          return of([]);
+        }
+
         return forkJoin(
           invoices.map((invoice) =>
             this.jobRepository.getById(invoice.jobAdId),
           ),
         ).pipe(
           map((jobs: JobAdDto[]) => {
+            if (!jobs.length) {
+              return [];
+            }
             return invoices.map(
               (invoice) =>
                 ({
@@ -84,13 +91,13 @@ export class InvoicesService {
   }
 
   deleteInvoiceByJobId(jobId: string) {
-    return this.repository.getAll({ jobId }).pipe(
+    return this.repository.getAll({ jobAdId: jobId }).pipe(
       switchMap((invoices) => {
-        return iif(
-          () => invoices.length > 0,
-          this.repository.delete(invoices[0].id),
-          of(EMPTY),
-        );
+        if (invoices.length) {
+          return this.deleteInvoice(invoices[0].id);
+        }
+
+        return of(EMPTY);
       }),
     );
   }

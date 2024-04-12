@@ -24,7 +24,6 @@ import { JobViewModel } from '../../../jobs/data-access/jobs';
       <button mat-button (click)="handleConfirmation(true)">Confirm</button>
     </mat-dialog-actions>
   `,
-  styleUrl: './confirm-dialog.component.scss',
 })
 export class ConfirmDialogComponent {
   @Output() decline = new EventEmitter<void>();

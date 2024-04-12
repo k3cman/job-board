@@ -19,7 +19,7 @@ import { InvoicesStore } from '../store/invoices.store';
 
     <ng-template #noData>
       <div class="w-full h-full flex items-center justify-center flex flex-col">
-        <img class="w-1/3 h-1/3" src="assets/no-data.svg" />
+        <img class="w-1/3 h-1/3" src="assets/no-data.svg" alt="no data" />
         <span class="text-2xl font-bold mt-10 text-slate-400"
           >You have no Invoices right now.</span
         >

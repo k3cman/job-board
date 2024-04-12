@@ -40,7 +40,25 @@
       "status": "published",
       "updatedAt": "2024-04-12T15:55:46.750Z",
       "createdAt": "2024-04-12T15:55:46.750Z"
+    },
+    {
+      "id": "c532",
+      "title": "New Job Ad",
+      "description": "Description of Job Ad",
+      "skills": [],
+      "status": "published",
+      "updatedAt": "2024-04-12T18:21:27.753Z",
+      "createdAt": "2024-04-12T18:21:27.753Z"
     }
   ],
-  "invoices": []
+  "invoices": [
+    {
+      "id": "b272",
+      "jobAdId": "c532",
+      "amount": 20,
+      "dueDate": "2024-05-27T18:21:27.769Z",
+      "createdAt": "2024-04-12T18:21:27.770Z",
+      "updatedAt": "2024-04-12T18:21:27.770Z"
+    }
+  ]
 }

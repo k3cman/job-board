@@ -10,12 +10,10 @@ import {
 } from '@angular/material/sidenav';
 import {
   BehaviorSubject,
-  debounce,
   debounceTime,
   fromEvent,
   Observable,
   of,
-  shareReplay,
   startWith,
   switchMap,
 } from 'rxjs';
@@ -51,19 +49,23 @@ import { AsyncPipe, NgIf } from '@angular/common';
         <span>JobAdsB2B</span>
       </mat-toolbar>
       <mat-drawer-container class="h-full">
-        <mat-drawer mode="side" [opened]="(screenSize$ | async) || false">
+        <mat-drawer mode="side" [opened]="(sidebarOpen$ | async) || false">
           <div class="w-56 p-4 flex flex-col">
             <a
               routerLink="jobs"
               (click)="toggleSidebar()"
               class="mb-2 p-2 h-8 w-full hover:bg-slate-200 flex items-center text-gray-700"
-              ><mat-icon class="mr-2">work</mat-icon>Jobs</a
+            >
+              <mat-icon class="mr-2">work</mat-icon>
+              Jobs</a
             >
             <a
               routerLink="invoices"
               (click)="toggleSidebar()"
               class="mb-2 p-2 h-8 w-full hover:bg-slate-200 flex items-center text-gray-700"
-              ><mat-icon class="mr-2">payments</mat-icon>Invoices</a
+            >
+              <mat-icon class="mr-2">payments</mat-icon>
+              Invoices</a
             >
           </div>
         </mat-drawer>
@@ -73,12 +75,10 @@ import { AsyncPipe, NgIf } from '@angular/common';
       </mat-drawer-container>
     </div>
   `,
-  styleUrl: './layout.component.scss',
 })
 export class LayoutComponent {
   private _toggleSidebar = new BehaviorSubject(false);
-
-  screenSize$: Observable<boolean> = fromEvent(window, 'resize').pipe(
+  sidebarOpen$: Observable<boolean> = fromEvent(window, 'resize').pipe(
     debounceTime(300),
     startWith(window.innerWidth),
     switchMap(() => {
@@ -88,7 +88,6 @@ export class LayoutComponent {
         return of(window.innerWidth >= 767);
       }
     }),
-    shareReplay(),
   );
 
   toggleSidebar() {

@@ -55,7 +55,7 @@ import { ConfirmDialogComponent } from '../../shared/ui/confirm-dialog/confirm-d
     </ng-container>
     <ng-template #noData>
       <div class="w-full h-full flex items-center justify-center flex flex-col">
-        <img class="w-1/3 h-1/3" src="assets/no-data.svg" />
+        <img class="w-1/3 h-1/3" src="assets/no-data.svg" alt="no data" />
         <span class="text-2xl font-bold mt-10 text-slate-400"
           >No results. Try changing filters or create a new Job Ad!</span
         >
@@ -71,13 +71,6 @@ import { ConfirmDialogComponent } from '../../shared/ui/confirm-dialog/confirm-d
 })
 export class JobsPageComponent implements OnDestroy {
   private _destroy$ = new Subject<void>();
-  private _columns = new BehaviorSubject([
-    'title',
-    'description',
-    'skills',
-    'status',
-    'actions',
-  ]);
   columns$: Observable<string[]> = fromEvent(window, 'resize').pipe(
     debounceTime(300),
     startWith(window.innerWidth),
@@ -197,11 +190,11 @@ export class JobsPageComponent implements OnDestroy {
   }
 
   private handleColumnsDependingOnScreen(size: number): Observable<string[]> {
-    if (window.innerWidth <= 425) {
+    if (size <= 425) {
       return of(['title', 'actions']);
-    } else if (window.innerWidth <= 768) {
+    } else if (size <= 768) {
       return of(['title', 'status', 'actions']);
-    } else if (window.innerWidth <= 1024) {
+    } else if (size <= 1024) {
       return of(['title', 'description', 'status', 'actions']);
     } else {
       return of(['title', 'description', 'skills', 'status', 'actions']);

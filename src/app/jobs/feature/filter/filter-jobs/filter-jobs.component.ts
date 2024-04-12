@@ -73,7 +73,6 @@ interface IJobFilterForm {
     </app-sidebar-dialog-wrapper>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrl: './filter-jobs.component.scss',
 })
 export class FilterJobsComponent {
   availableStatuses = ['draft', 'published', 'archived'];

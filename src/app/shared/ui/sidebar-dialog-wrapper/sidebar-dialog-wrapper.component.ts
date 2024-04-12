@@ -19,7 +19,6 @@ import { MatIconButton } from '@angular/material/button';
       </div>
     </div>
   `,
-  styleUrl: './sidebar-dialog-wrapper.component.scss',
 })
 export class SidebarDialogWrapperComponent {
   @Input() title = '';

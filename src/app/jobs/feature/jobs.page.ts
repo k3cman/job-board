@@ -71,13 +71,6 @@ import { ConfirmDialogComponent } from '../../shared/ui/confirm-dialog/confirm-d
 })
 export class JobsPageComponent implements OnDestroy {
   private _destroy$ = new Subject<void>();
-  private _columns = new BehaviorSubject([
-    'title',
-    'description',
-    'skills',
-    'status',
-    'actions',
-  ]);
   columns$: Observable<string[]> = fromEvent(window, 'resize').pipe(
     debounceTime(300),
     startWith(window.innerWidth),

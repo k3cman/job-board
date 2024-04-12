@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { JobsPageComponent } from './jobs-page/jobs.page';
 import { JobsRoutingModule } from './jobs-routing.module';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import {
@@ -43,10 +42,11 @@ import { JobsTableComponent } from '../ui/jobs-table/jobs-table.component';
 import { FilterBarComponent } from '@shared/ui/filter-bar/filter-bar.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { JobStatusComponent } from '@shared/ui/job-status/job-status.component';
+import { ViewJobsComponent } from './view-jobs/view-jobs.component';
 
 @NgModule({
   declarations: [
-    JobsPageComponent,
+    ViewJobsComponent,
     EditJobDialogComponent,
     CreateJobDialogComponent,
     FilterJobsComponent,

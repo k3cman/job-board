@@ -68,7 +68,7 @@ import { ConfirmDialogComponent } from '@shared/ui/confirm-dialog/confirm-dialog
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class JobsPageComponent implements OnDestroy {
+export class ViewJobsComponent implements OnDestroy {
   private _destroy$ = new Subject<void>();
   columns$: Observable<string[]> = fromEvent(window, 'resize').pipe(
     debounceTime(300),

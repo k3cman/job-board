@@ -1,6 +1,6 @@
 export const invoiceDueDate = (creationDate: Date) => {
   const dueDate = new Date(creationDate);
-  dueDate.setDate(dueDate.getDate() + 45);
+  dueDate.setDate(dueDate.getDate() + 75);
 
   return dueDate;
 };

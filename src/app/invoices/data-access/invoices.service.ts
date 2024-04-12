@@ -1,5 +1,14 @@
 import { Injectable } from '@angular/core';
-import { forkJoin, map, mergeMap, Observable } from 'rxjs';
+import {
+  EMPTY,
+  forkJoin,
+  iif,
+  map,
+  mergeMap,
+  Observable,
+  of,
+  switchMap,
+} from 'rxjs';
 import { Invoice, InvoiceDto } from '../../types/invoices';
 import { InvoiceRepository } from '../../core/repositories/invoice.repository';
 import { InvoiceViewModel } from './invoices';
@@ -50,11 +59,6 @@ export class InvoicesService {
       }),
     );
   }
-
-  getInvoiceByJobId(id: string): Observable<InvoiceDto | null> {
-    return this.repository.getById(id);
-  }
-
   createInvoice(payload: Partial<Invoice>): Observable<InvoiceDto> {
     const dto: Partial<InvoiceDto> = {
       ...payload,
@@ -77,5 +81,17 @@ export class InvoicesService {
     };
 
     return this.createInvoice(invoice);
+  }
+
+  deleteInvoiceByJobId(jobId: string) {
+    return this.repository.getAll({ jobId }).pipe(
+      switchMap((invoices) => {
+        return iif(
+          () => invoices.length > 0,
+          this.repository.delete(invoices[0].id),
+          of(EMPTY),
+        );
+      }),
+    );
   }
 }

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { InvoicesStore } from '../store/invoices.store';
+import { InvoicesStore } from '../../store/invoices.store';
 
 @Component({
   template: `
@@ -34,7 +34,7 @@ import { InvoicesStore } from '../store/invoices.store';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [InvoicesStore],
 })
-export class InvoicesPageComponent {
+export class ViewInvoicesComponent {
   vm$ = this.store.vm$;
   displayedColumns = ['id', 'jobName', 'dueDate', 'amount'];
   constructor(private store: InvoicesStore) {}

@@ -1,11 +1,11 @@
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { KeyValue } from '@angular/common';
 import { IDeleteResponse } from '../../types/delete-response';
+import { IFilter } from '../../types/filter';
 
 export interface IBaseRepository<T> {
-  getAll(filter: any): Observable<T[]>;
+  getAll(filter: IFilter): Observable<T[]>;
   getById(id: string): Observable<T>;
   create(payload: T): Observable<T>;
   put(id: string, payload: T): Observable<T>;
@@ -20,8 +20,8 @@ export abstract class BaseRepository<T> implements IBaseRepository<T> {
     this.endpoint = environment.apiUrl + endpoint;
   }
 
-  getAll(filter: any): Observable<T[]> {
-    const params = new HttpParams().appendAll(filter as any);
+  getAll(filter: IFilter): Observable<T[]> {
+    const params = new HttpParams().appendAll(filter);
     return this.http.get<T[]>(this.endpoint, { params });
   }
 

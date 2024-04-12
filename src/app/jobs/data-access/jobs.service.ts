@@ -4,6 +4,7 @@ import { map, Observable } from 'rxjs';
 import { JobRepository } from '../../core/repositories/job.repository';
 import { IDeleteResponse } from '../../types/delete-response';
 import { JobViewModel } from './jobs';
+import { IFilter } from '../../types/filter';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,7 @@ import { JobViewModel } from './jobs';
 export class JobsService {
   constructor(private repository: JobRepository) {}
 
-  getJobs(filter: any): Observable<JobViewModel[]> {
+  getJobs(filter: IFilter): Observable<JobViewModel[]> {
     return this.repository.getAll(filter).pipe(
       map((data) =>
         data.map((job) => ({

@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
-import { InvoiceDto } from '../../types/invoices';
 import { InvoicesService } from '../data-access/invoices.service';
 import { JobsService } from '../../jobs/data-access/jobs.service';
 import { combineLatest, Observable, switchMap, tap } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { InvoiceViewModel } from '../data-access/invoices';
+import { IFilter } from '../../types/filter';
 
 export interface IInvoiceStore {
   invoices: InvoiceViewModel[];
-  filters: any;
+  filters: IFilter;
   loading: boolean;
 }
 
@@ -24,7 +24,7 @@ export class InvoicesStore extends ComponentStore<IInvoiceStore> {
     data: this.data$,
     filters: this.filters$,
   });
-  fetch = this.effect((params: Observable<any>) => {
+  fetch = this.effect((params: Observable<IFilter>) => {
     return params.pipe(
       switchMap((params) => {
         return this.invoiceService.getInvoices(params).pipe(
@@ -55,7 +55,7 @@ export class InvoicesStore extends ComponentStore<IInvoiceStore> {
   ) {
     super({
       invoices: [],
-      filters: undefined,
+      filters: {},
       loading: true,
     });
   }

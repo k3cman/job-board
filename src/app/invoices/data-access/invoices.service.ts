@@ -6,6 +6,7 @@ import { InvoiceViewModel } from './invoices';
 import { JobRepository } from '../../core/repositories/job.repository';
 import { JobAdDto } from '../../types/jobs';
 import { IDeleteResponse } from '../../types/delete-response';
+import { IFilter } from '../../types/filter';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,7 @@ export class InvoicesService {
     private jobRepository: JobRepository,
   ) {}
 
-  getInvoices(filter: any): Observable<InvoiceViewModel[]> {
+  getInvoices(filter: IFilter): Observable<InvoiceViewModel[]> {
     return this.repository.getAll(filter).pipe(
       mergeMap((invoices: InvoiceDto[]) => {
         return forkJoin(

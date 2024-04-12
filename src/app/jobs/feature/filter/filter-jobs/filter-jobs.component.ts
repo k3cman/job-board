@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormControl } from '@angular/forms';
+import { IFilter } from '../../../../types/filter';
 
 interface IJobFilterForm {
   title: FormControl<string | null>;
@@ -81,7 +82,7 @@ export class FilterJobsComponent {
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<FilterJobsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: IFilter,
   ) {
     this.form.patchValue({
       ...data,

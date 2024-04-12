@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
-import { JobAdDto } from '../../types/jobs';
 import { JobsService } from '../data-access/jobs.service';
 import { EMPTY, Observable, switchMap, tap } from 'rxjs';
 import { InvoicesService } from '../../invoices/data-access/invoices.service';
@@ -8,10 +7,11 @@ import { InvoiceDto } from '../../types/invoices';
 import { ActivatedRoute } from '@angular/router';
 import { IDeleteResponse } from '../../types/delete-response';
 import { JobViewModel } from '../data-access/jobs';
+import { IFilter } from '../../types/filter';
 
 interface IJobStore {
   jobs: JobViewModel[];
-  filters: any;
+  filters: IFilter;
   loading: boolean;
 }
 @Injectable()
@@ -20,7 +20,7 @@ export class JobsStore extends ComponentStore<IJobStore> {
   loading$ = this.select((state) => state.loading);
   filters$ = this.select((state) => state.filters);
 
-  fetch = this.effect((filter: Observable<any>) =>
+  fetch = this.effect((filter: Observable<IFilter>) =>
     filter.pipe(
       switchMap((filter) => {
         return this.jobService.getJobs(filter).pipe(
@@ -143,7 +143,7 @@ export class JobsStore extends ComponentStore<IJobStore> {
   ) {
     super({
       jobs: [],
-      filters: undefined,
+      filters: {},
       loading: true,
     });
   }

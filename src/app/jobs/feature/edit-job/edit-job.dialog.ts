@@ -5,7 +5,6 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { JobAdDto } from '../../../types/jobs';
 import { JobsService } from '../../data-access/jobs.service';
 import { Subject, takeUntil } from 'rxjs';
 import { JobViewModel } from '../../data-access/jobs';

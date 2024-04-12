@@ -4,12 +4,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditJobDialogComponent } from './edit-job/edit-job.dialog';
 import { CreateJobDialogComponent } from './create-job/create-job.dialog';
 import { JobsStore } from '../store/job.store';
-import { JobAdDto } from '../../types/jobs';
 import { FilterJobsComponent } from './filter/filter-jobs/filter-jobs.component';
 import { Router } from '@angular/router';
 import { combineLatest, filter, Subject, takeUntil } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { JobViewModel } from '../data-access/jobs';
+import { IFilter } from '../../types/filter';
 
 @Component({
   template: `
@@ -184,7 +184,7 @@ export class JobsPageComponent implements OnDestroy {
     }
   }
 
-  openFilter(filter: any) {
+  openFilter(filter: IFilter) {
     this.dialog
       .open(FilterJobsComponent, {
         height: '100vh',
@@ -207,10 +207,10 @@ export class JobsPageComponent implements OnDestroy {
     this._destroy$.complete();
   }
 
-  removeFilter(filters: any, key: unknown) {
+  removeFilter(filters: IFilter, key: string) {
     const currentFilters = { ...filters };
 
-    delete currentFilters[key as string];
+    delete currentFilters[key];
     this.router.navigate([], { queryParams: currentFilters });
   }
 }

@@ -1,15 +1,15 @@
 import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
-import { JobsService } from '../data-access/jobs.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EditJobDialogComponent } from './edit-job/edit-job.dialog';
 import { CreateJobDialogComponent } from './create-job/create-job.dialog';
 import { JobsStore } from '../store/job.store';
 import { FilterJobsComponent } from './filter/filter-jobs/filter-jobs.component';
 import { Router } from '@angular/router';
-import { combineLatest, filter, Subject, takeUntil, tap } from 'rxjs';
+import { combineLatest, filter, Subject, takeUntil } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { JobViewModel } from '../data-access/jobs';
 import { IFilter } from '../../types/filter';
+import { ConfirmDialogComponent } from '../../shared/ui/confirm-dialog/confirm-dialog.component';
 
 @Component({
   template: `
@@ -43,7 +43,6 @@ import { IFilter } from '../../types/filter';
     <ng-template #loading> Loading</ng-template>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [JobsStore],
 })
 export class JobsPageComponent implements OnDestroy {
   private _destroy$ = new Subject<void>();
@@ -55,7 +54,6 @@ export class JobsPageComponent implements OnDestroy {
     filters: this.store.filters$,
   });
   constructor(
-    private jobsService: JobsService,
     private dialog: MatDialog,
     public store: JobsStore,
     private router: Router,
@@ -63,9 +61,22 @@ export class JobsPageComponent implements OnDestroy {
   ) {}
 
   deleteJob(element: JobViewModel) {
-    this.jobsService.deleteJob(element.id).subscribe((data) => {
-      this.store.deleteJobAd(data);
-    });
+    this.dialog
+      .open(ConfirmDialogComponent, {
+        data: element,
+      })
+      .afterClosed()
+      .pipe(
+        takeUntil(this._destroy$),
+        filter((e) => !!e),
+      )
+      .subscribe(() => {
+        this.store.deleteJob(element);
+        this.snackBar.open(element.title + ' deleted successfully', undefined, {
+          duration: 2000,
+          panelClass: ['mat-toolbar', 'mat-warn'],
+        });
+      });
   }
 
   handleEditJob(element: JobViewModel) {
@@ -85,7 +96,6 @@ export class JobsPageComponent implements OnDestroy {
         filter((data) => !!data),
       )
       .subscribe((data: JobViewModel) => {
-        this.store.updateJob(data);
         this.snackBar.open(data.title + 'Job updated successfully');
       });
   }
@@ -106,7 +116,6 @@ export class JobsPageComponent implements OnDestroy {
         filter((data) => !!data),
       )
       .subscribe((data) => {
-        this.store.addJobAd(data);
         this.snackBar.open(data.title + 'Job Ad created successfully');
       });
   }

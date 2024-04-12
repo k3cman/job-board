@@ -5,9 +5,9 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { JobsService } from '../../data-access/jobs.service';
 import { Subject, takeUntil } from 'rxjs';
 import { JobViewModel } from '../../data-access/jobs';
+import { JobsStore } from '../../store/job.store';
 
 @Component({
   template: `
@@ -25,7 +25,7 @@ export class EditJobDialogComponent implements OnDestroy {
   constructor(
     private dialogRef: MatDialogRef<EditJobDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: JobViewModel,
-    private service: JobsService,
+    private store: JobsStore,
   ) {}
 
   close() {
@@ -34,11 +34,11 @@ export class EditJobDialogComponent implements OnDestroy {
 
   handleSubmit(updatedJob: Partial<JobViewModel>) {
     const payload = { ...this.data, ...updatedJob };
-    this.service
-      .updateJob(payload)
+    this.store.editJob(payload);
+    this.store.actionInProgress$
       .pipe(takeUntil(this._destroy$))
-      .subscribe((data) => {
-        this.dialogRef.close(data);
+      .subscribe(() => {
+        this.dialogRef.close(payload);
       });
   }
 

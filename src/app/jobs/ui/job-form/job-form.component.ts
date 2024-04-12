@@ -153,6 +153,7 @@ export class JobFormComponent {
 
   handleSubmit(jobStatus: JobAdStatus) {
     if (this.form.valid) {
+      this.form.disable();
       this.submitJobAd.emit({
         ...this.form.getRawValue(),
         status: jobStatus,

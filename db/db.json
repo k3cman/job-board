@@ -1,17 +1,17 @@
 {
   "jobs": [
     {
-      "id": "2",
-      "title": "Juggler",
-      "description": "Master of juggling balls and chainsaws",
+      "id": "1",
+      "title": "Wizard",
+      "description": "Conjures spells and potions",
       "skills": [
-        "juggling",
-        "entertainment",
-        "coordination"
+        "magic",
+        "alchemy",
+        "wizardry"
       ],
-      "status": "archived",
-      "updatedAt": "2024-04-12T12:08:38.148Z",
-      "createdAt": "2024-03-22T10:15:00Z"
+      "status": "published",
+      "createdAt": "2024-03-20T09:30:00Z",
+      "updatedAt": "2024-03-20T09:30:00Z"
     },
     {
       "id": "3",
@@ -22,187 +22,25 @@
         "chocolate",
         "discernment"
       ],
-      "status": "published",
+      "status": "archived",
       "createdAt": "2024-03-24T14:00:00Z",
       "updatedAt": "2024-03-24T14:00:00Z"
     },
     {
-      "id": "4",
-      "title": "Nap Consultant",
-      "description": "Expert in optimizing nap schedules",
+      "id": "f289",
+      "title": "Nemanja",
+      "description": "Kecman Nemanja",
       "skills": [
-        "napping",
-        "consulting",
-        "rest"
+        "test",
+        "skill",
+        "first",
+        "",
+        "second"
       ],
       "status": "published",
-      "updatedAt": "2024-04-12T12:08:44.092Z",
-      "createdAt": "2024-03-25T08:45:00Z"
-    },
-    {
-      "id": "6836",
-      "title": "3213",
-      "description": "21321312321323123123",
-      "skills": [],
-      "status": "published",
-      "updatedAt": "2024-04-12T10:43:12.995Z"
-    },
-    {
-      "id": "2ae8",
-      "title": "Testing create and publish",
-      "description": "Testing create and publish",
-      "skills": [],
-      "status": "draft"
-    },
-    {
-      "id": "6c44",
-      "title": "nemanja",
-      "description": "neamnja kecman",
-      "skills": [],
-      "status": "published",
-      "updatedAt": "2024-04-12T10:43:24.397Z"
-    },
-    {
-      "id": "39f7",
-      "title": "Testing create and publish",
-      "description": "Testing create and publishTesting create and publish",
-      "skills": [],
-      "status": "draft"
-    },
-    {
-      "id": "d93d",
-      "title": "Testing create and publish",
-      "description": "Testing create and publish",
-      "skills": [],
-      "status": "draft"
-    },
-    {
-      "id": "2f14",
-      "title": "Nemanja",
-      "description": "Testing create and publish",
-      "skills": [],
-      "status": "draft"
-    },
-    {
-      "id": "1448",
-      "title": "Nemanja",
-      "description": "Nemanja test",
-      "skills": [],
-      "status": "draft"
-    },
-    {
-      "id": "2789",
-      "title": "askjdlasjldj",
-      "description": "Nemanja Kecman",
-      "skills": [],
-      "status": "archived",
-      "updatedAt": "2024-04-12T11:49:28.010Z",
-      "createdAt": "2024-04-12T10:44:19.178Z"
-    },
-    {
-      "id": "c861",
-      "title": "12312",
-      "description": "123123123123123123",
-      "skills": [],
-      "status": "draft",
-      "updatedAt": "2024-04-12T10:52:06.389Z",
-      "createdAt": "2024-04-12T10:52:06.389Z"
-    },
-    {
-      "id": "624d",
-      "title": "Testing",
-      "description": "Testingggggggggggg",
-      "skills": [],
-      "status": "draft",
-      "updatedAt": "2024-04-12T10:58:21.801Z",
-      "createdAt": "2024-04-12T10:58:21.801Z"
-    },
-    {
-      "id": "75ae",
-      "title": "FUCK THIS",
-      "description": "FUCK RTHI SHIT",
-      "skills": [],
-      "status": "draft",
-      "updatedAt": "2024-04-12T10:59:10.029Z",
-      "createdAt": "2024-04-12T10:59:10.029Z"
+      "updatedAt": "2024-04-12T15:55:46.750Z",
+      "createdAt": "2024-04-12T15:55:46.750Z"
     }
   ],
-  "invoices": [
-    {
-      "id": "ce90",
-      "jobAdId": 2,
-      "amount": 5,
-      "dueDate": "2024-05-25T22:35:52.779Z"
-    },
-    {
-      "id": "1f6e",
-      "jobAdId": 6836,
-      "amount": 10,
-      "dueDate": "2024-05-26T14:21:10.443Z"
-    },
-    {
-      "id": "53ef",
-      "jobAdId": "2f14",
-      "amount": 20,
-      "dueDate": "2024-05-26T21:03:56.429Z"
-    },
-    {
-      "id": "34a2",
-      "jobAdId": "1448",
-      "amount": 40,
-      "dueDate": "2024-05-27T09:33:03.114Z"
-    },
-    {
-      "id": "ac7b",
-      "jobAdId": "1",
-      "amount": 40,
-      "dueDate": "2024-05-27T09:33:42.475Z"
-    },
-    {
-      "id": "bc17",
-      "jobAdId": "2",
-      "amount": 10,
-      "dueDate": "2024-05-27T09:33:52.569Z"
-    },
-    {
-      "id": "ea5b",
-      "jobAdId": "3",
-      "amount": 20,
-      "dueDate": "2024-05-27T09:35:23.580Z",
-      "createdAt": "2024-04-12T09:35:23.581Z",
-      "updatedAt": "2024-04-12T09:35:23.581Z"
-    },
-    {
-      "id": "ba65",
-      "jobAdId": "6836",
-      "amount": 10,
-      "dueDate": "2024-05-27T10:43:13.013Z",
-      "createdAt": "2024-04-12T10:43:13.013Z",
-      "updatedAt": "2024-04-12T10:43:13.013Z"
-    },
-    {
-      "id": "d579",
-      "jobAdId": "6c44",
-      "amount": 10,
-      "dueDate": "2024-05-27T10:43:24.408Z",
-      "createdAt": "2024-04-12T10:43:24.408Z",
-      "updatedAt": "2024-04-12T10:43:24.408Z"
-    },
-    {
-      "id": "0d85",
-      "jobAdId": "2789",
-      "amount": 30,
-      "dueDate": "2024-05-27T10:44:19.277Z",
-      "createdAt": "2024-04-12T10:44:19.277Z",
-      "updatedAt": "2024-04-12T10:44:19.277Z"
-    },
-    {
-      "id": "86a3",
-      "jobAdId": "4",
-      "amount": 0,
-      "dueDate": "2024-05-27T12:08:44.101Z",
-      "createdAt": "2024-04-12T12:08:44.101Z",
-      "updatedAt": "2024-04-12T12:08:44.101Z"
-    }
-  ]
+  "invoices": []
 }

@@ -86,7 +86,6 @@ export class FilterJobsComponent {
   ) {
     this.form.patchValue({
       ...data,
-      //TODO check for array type
     });
   }
 

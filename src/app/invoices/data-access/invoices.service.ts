@@ -1,5 +1,14 @@
 import { Injectable } from '@angular/core';
-import { forkJoin, map, mergeMap, Observable } from 'rxjs';
+import {
+  EMPTY,
+  forkJoin,
+  iif,
+  map,
+  mergeMap,
+  Observable,
+  of,
+  switchMap,
+} from 'rxjs';
 import { Invoice, InvoiceDto } from '../../types/invoices';
 import { InvoiceRepository } from '../../core/repositories/invoice.repository';
 import { InvoiceViewModel } from './invoices';
@@ -22,12 +31,19 @@ export class InvoicesService {
   getInvoices(filter: IFilter): Observable<InvoiceViewModel[]> {
     return this.repository.getAll(filter).pipe(
       mergeMap((invoices: InvoiceDto[]) => {
+        if (!invoices.length) {
+          return of([]);
+        }
+
         return forkJoin(
           invoices.map((invoice) =>
             this.jobRepository.getById(invoice.jobAdId),
           ),
         ).pipe(
           map((jobs: JobAdDto[]) => {
+            if (!jobs.length) {
+              return [];
+            }
             return invoices.map(
               (invoice) =>
                 ({
@@ -50,11 +66,6 @@ export class InvoicesService {
       }),
     );
   }
-
-  getInvoiceByJobId(id: string): Observable<InvoiceDto | null> {
-    return this.repository.getById(id);
-  }
-
   createInvoice(payload: Partial<Invoice>): Observable<InvoiceDto> {
     const dto: Partial<InvoiceDto> = {
       ...payload,
@@ -77,5 +88,17 @@ export class InvoicesService {
     };
 
     return this.createInvoice(invoice);
+  }
+
+  deleteInvoiceByJobId(jobId: string) {
+    return this.repository.getAll({ jobAdId: jobId }).pipe(
+      switchMap((invoices) => {
+        if (invoices.length) {
+          return this.deleteInvoice(invoices[0].id);
+        }
+
+        return of(EMPTY);
+      }),
+    );
   }
 }

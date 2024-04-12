@@ -8,7 +8,15 @@ import {
   MatDrawerContainer,
   MatDrawerContent,
 } from '@angular/material/sidenav';
-import { fromEvent, map, startWith } from 'rxjs';
+import {
+  BehaviorSubject,
+  fromEvent,
+  Observable,
+  of,
+  shareReplay,
+  startWith,
+  switchMap,
+} from 'rxjs';
 import { AsyncPipe, NgIf } from '@angular/common';
 
 @Component({
@@ -28,20 +36,20 @@ import { AsyncPipe, NgIf } from '@angular/common';
   template: `
     <div class="flex flex-col h-full w-full">
       <mat-toolbar>
-        <button
-          mat-icon-button
-          class="example-icon"
-          aria-label="Example icon-button with menu icon"
-        >
-          <mat-icon>menu</mat-icon>
-        </button>
+        <div class="md:hidden">
+          <button
+            mat-icon-button
+            aria-label="Example icon-button with menu icon"
+            (click)="toggleSidebar()"
+          >
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+
         <span>JobAdsB2B</span>
       </mat-toolbar>
-      <mat-drawer-container
-        class="h-full"
-        *ngIf="screenSize$ | async as screenSize"
-      >
-        <mat-drawer mode="side" [opened]="screenSize > 768">
+      <mat-drawer-container class="h-full">
+        <mat-drawer mode="side" [opened]="(screenSize$ | async) || false">
           <div class="w-56 p-4 flex flex-col">
             <a
               routerLink="jobs"
@@ -64,8 +72,20 @@ import { AsyncPipe, NgIf } from '@angular/common';
   styleUrl: './layout.component.scss',
 })
 export class LayoutComponent {
-  screenSize$ = fromEvent(window, 'resize').pipe(
+  private _toggleSidebar = new BehaviorSubject(false);
+  screenSize$: Observable<boolean> = fromEvent(window, 'resize').pipe(
     startWith(window.innerWidth),
-    map(() => window.innerWidth),
+    switchMap(() => {
+      if (window.innerWidth < 768) {
+        return this._toggleSidebar.asObservable();
+      } else {
+        return of(window.innerWidth > 768);
+      }
+    }),
+    shareReplay(),
   );
+
+  toggleSidebar() {
+    this._toggleSidebar.next(!this._toggleSidebar.getValue());
+  }
 }

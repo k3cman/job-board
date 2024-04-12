@@ -161,9 +161,11 @@ export class JobFormComponent {
     }
   }
 
-  addSkill($event: MatChipInputEvent) {
-    const controlValue = [...this.skillsControl.value];
-    this.skillsControl.patchValue([...controlValue, $event.value]);
+  addSkill({ value }: MatChipInputEvent) {
+    if (value && value !== '') {
+      const controlValue = [...this.skillsControl.value];
+      this.skillsControl.patchValue([...controlValue, value]);
+    }
   }
 
   removeSkill(skill: string) {

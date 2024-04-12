@@ -10,6 +10,8 @@ import {
 } from '@angular/material/sidenav';
 import {
   BehaviorSubject,
+  debounce,
+  debounceTime,
   fromEvent,
   Observable,
   of,
@@ -53,11 +55,13 @@ import { AsyncPipe, NgIf } from '@angular/common';
           <div class="w-56 p-4 flex flex-col">
             <a
               routerLink="jobs"
+              (click)="toggleSidebar()"
               class="mb-2 p-2 h-8 w-full hover:bg-slate-200 flex items-center text-gray-700"
               ><mat-icon class="mr-2">work</mat-icon>Jobs</a
             >
             <a
               routerLink="invoices"
+              (click)="toggleSidebar()"
               class="mb-2 p-2 h-8 w-full hover:bg-slate-200 flex items-center text-gray-700"
               ><mat-icon class="mr-2">payments</mat-icon>Invoices</a
             >
@@ -73,13 +77,15 @@ import { AsyncPipe, NgIf } from '@angular/common';
 })
 export class LayoutComponent {
   private _toggleSidebar = new BehaviorSubject(false);
+
   screenSize$: Observable<boolean> = fromEvent(window, 'resize').pipe(
+    debounceTime(300),
     startWith(window.innerWidth),
     switchMap(() => {
-      if (window.innerWidth < 768) {
+      if (window.innerWidth <= 767) {
         return this._toggleSidebar.asObservable();
       } else {
-        return of(window.innerWidth > 768);
+        return of(window.innerWidth >= 767);
       }
     }),
     shareReplay(),

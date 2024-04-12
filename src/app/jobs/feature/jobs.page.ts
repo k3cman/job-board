@@ -5,7 +5,19 @@ import { CreateJobDialogComponent } from './create-job/create-job.dialog';
 import { JobsStore } from '../store/job.store';
 import { FilterJobsComponent } from './filter/filter-jobs/filter-jobs.component';
 import { Router } from '@angular/router';
-import { combineLatest, filter, of, Subject, takeUntil } from 'rxjs';
+import {
+  BehaviorSubject,
+  combineLatest,
+  debounceTime,
+  filter,
+  fromEvent,
+  Observable,
+  of,
+  startWith,
+  Subject,
+  switchMap,
+  takeUntil,
+} from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { JobViewModel } from '../data-access/jobs';
 import { IFilter } from '../../types/filter';
@@ -32,7 +44,7 @@ import { ConfirmDialogComponent } from '../../shared/ui/confirm-dialog/confirm-d
             </div>
             <app-jobs-table
               [tableData]="vm.data"
-              [columns]="displayedColumns"
+              [columns]="(columns$ | async) || []"
               (statusChange)="handleStatusChange($event)"
               (editJob)="handleEditJob($event)"
               (deleteJob)="deleteJob($event)"
@@ -60,7 +72,20 @@ import { ConfirmDialogComponent } from '../../shared/ui/confirm-dialog/confirm-d
 })
 export class JobsPageComponent implements OnDestroy {
   private _destroy$ = new Subject<void>();
-  displayedColumns = ['title', 'description', 'skills', 'status', 'actions'];
+  private _columns = new BehaviorSubject([
+    'title',
+    'description',
+    'skills',
+    'status',
+    'actions',
+  ]);
+  columns$: Observable<string[]> = fromEvent(window, 'resize').pipe(
+    debounceTime(300),
+    startWith(window.innerWidth),
+    switchMap(() => {
+      return this.handleColumnsDependingOnScreen(window.innerWidth);
+    }),
+  );
 
   vm$ = combineLatest({
     loading: this.store.loading$,
@@ -160,15 +185,27 @@ export class JobsPageComponent implements OnDestroy {
       });
   }
 
-  ngOnDestroy() {
-    this._destroy$.next();
-    this._destroy$.complete();
-  }
-
   removeFilter(filters: IFilter, key: string) {
     const currentFilters = { ...filters };
 
     delete currentFilters[key];
     this.router.navigate([], { queryParams: currentFilters });
+  }
+
+  ngOnDestroy() {
+    this._destroy$.next();
+    this._destroy$.complete();
+  }
+
+  private handleColumnsDependingOnScreen(size: number): Observable<string[]> {
+    if (window.innerWidth <= 425) {
+      return of(['title', 'actions']);
+    } else if (window.innerWidth <= 768) {
+      return of(['title', 'status', 'actions']);
+    } else if (window.innerWidth <= 1024) {
+      return of(['title', 'description', 'status', 'actions']);
+    } else {
+      return of(['title', 'description', 'skills', 'status', 'actions']);
+    }
   }
 }

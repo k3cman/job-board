@@ -10,6 +10,7 @@ import { combineLatest, filter, Subject, takeUntil, tap } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { JobViewModel } from '../data-access/jobs';
 import { IFilter } from '../../types/filter';
+import { ConfirmDialogComponent } from '../../shared/ui/confirm-dialog/confirm-dialog.component';
 
 @Component({
   template: `
@@ -63,9 +64,21 @@ export class JobsPageComponent implements OnDestroy {
   ) {}
 
   deleteJob(element: JobViewModel) {
-    this.jobsService.deleteJob(element.id).subscribe((data) => {
-      this.store.deleteJobAd(data);
-    });
+    this.dialog
+      .open(ConfirmDialogComponent, {
+        data: element,
+      })
+      .afterClosed()
+      .pipe(
+        takeUntil(this._destroy$),
+        filter((e) => !!e),
+      )
+      .subscribe(() => {
+        this.jobsService.deleteJob(element.id).subscribe((data) => {
+          this.store.deleteJobAd(data);
+          this.snackBar.open(element.title + 'Job deleted');
+        });
+      });
   }
 
   handleEditJob(element: JobViewModel) {

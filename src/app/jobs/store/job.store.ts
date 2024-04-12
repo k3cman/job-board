@@ -12,7 +12,7 @@ import {
 } from 'rxjs';
 import { InvoicesService } from '../../invoices/data-access/invoices.service';
 import { InvoiceDto } from '../../types/invoices';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { IDeleteResponse } from '../../types/delete-response';
 import { JobViewModel } from '../data-access/jobs';
 import { IFilter } from '../../types/filter';
@@ -49,7 +49,7 @@ export class JobsStore extends ComponentStore<IJobStore> {
 
   addJobAd = this.effect((job: Observable<JobViewModel>) => {
     return job.pipe(
-      tap((job) => {
+      tap(() => {
         this.updateJobs(job);
         this.createInvoice(job);
       }),
@@ -58,7 +58,7 @@ export class JobsStore extends ComponentStore<IJobStore> {
 
   listenToFilters = this.effect(() => {
     return this.activatedRoute.queryParams.pipe(
-      tap((value) => {
+      tap((value: Params) => {
         this.setState((state) => ({
           ...state,
           filters: value,
@@ -85,7 +85,7 @@ export class JobsStore extends ComponentStore<IJobStore> {
 
   updateJob = this.effect((job: Observable<JobViewModel>) => {
     return job.pipe(
-      tap((job) => {
+      tap((job: JobViewModel) => {
         this.createInvoice(job);
       }),
     );

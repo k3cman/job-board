@@ -1,7 +1,7 @@
 import { JobAdStatus } from '../../types/jobs';
 
 export interface JobViewModel {
-  id: number | string;
+  id: string;
   title: string;
   description: string;
   skills: string[];

@@ -68,7 +68,7 @@ export class JobsService {
       createdAt: payload.metadata.createdAt,
       _embedded: payload.metadata._embedded,
     };
-    return this.repository.put(payload.id.toString(), dto).pipe(
+    return this.repository.put(payload.id, dto).pipe(
       map((job: JobAdDto) => ({
         id: job.id,
         title: job.title,
@@ -84,7 +84,7 @@ export class JobsService {
     );
   }
 
-  deleteJob(id: number | string): Observable<IDeleteResponse> {
-    return this.repository.delete(id.toString());
+  deleteJob(id: string): Observable<IDeleteResponse> {
+    return this.repository.delete(id);
   }
 }

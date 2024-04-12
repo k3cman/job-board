@@ -1,6 +1,6 @@
 export interface InvoiceViewModel {
-  id: number | string;
-  jobAdId: number | string;
+  id: string;
+  jobAdId: string;
   jobName: string;
   amount: number;
   dueDate: Date;

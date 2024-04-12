@@ -70,7 +70,7 @@ export class JobsStore extends ComponentStore<IJobStore> {
       }),
       switchMap((invoice: InvoiceDto | null) => {
         if (invoice) {
-          return this.invoiceService.deleteInvoice(invoice.id.toString());
+          return this.invoiceService.deleteInvoice(invoice.id);
         }
         return EMPTY;
       }),
@@ -133,7 +133,7 @@ export class JobsStore extends ComponentStore<IJobStore> {
 
   removeJob = this.updater((state, id: string) => ({
     ...state,
-    jobs: state.jobs.filter((job) => job.id.toString() !== id),
+    jobs: state.jobs.filter((job) => job.id !== id),
   }));
 
   constructor(
@@ -148,7 +148,7 @@ export class JobsStore extends ComponentStore<IJobStore> {
     });
   }
 
-  private createInvoiceForPublishedJob(id: string | number) {
-    return this.invoiceService.createInvoiceForJob(id.toString());
+  private createInvoiceForPublishedJob(id: string) {
+    return this.invoiceService.createInvoiceForJob(id);
   }
 }

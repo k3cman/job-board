@@ -21,7 +21,7 @@ export class InvoicesService {
       mergeMap((invoices: InvoiceDto[]) => {
         return forkJoin(
           invoices.map((invoice) =>
-            this.jobRepository.getById(invoice.jobAdId.toString()),
+            this.jobRepository.getById(invoice.jobAdId),
           ),
         ).pipe(
           map((jobs: JobAdDto[]) => {
@@ -31,9 +31,8 @@ export class InvoicesService {
                   id: invoice.id,
                   jobAdId: invoice.jobAdId,
                   jobName:
-                    jobs.find(
-                      (job) => job.id.toString() === invoice.jobAdId.toString(),
-                    )?.title || 'N/A',
+                    jobs.find((job) => job.id === invoice.jobAdId)?.title ||
+                    'N/A',
                   amount: invoice.amount,
                   dueDate: invoice.dueDate,
                   metadata: {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BaseRepository } from './base.repository';
-import { InvoiceDto } from '../../types/invoices';
+import { InvoiceDto } from '@appTypes/invoices';
 
 @Injectable({
   providedIn: 'root',

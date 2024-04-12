@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { JobSkillsComponent } from '../../../shared/ui/job-skills/job-skills.component';
-import { JobStatusComponent } from '../../../shared/ui/job-status/job-status.component';
+import { JobSkillsComponent } from '@shared/ui/job-skills/job-skills.component';
+import { JobStatusComponent } from '@shared/ui/job-status/job-status.component';
 import {
   MatCell,
   MatCellDef,

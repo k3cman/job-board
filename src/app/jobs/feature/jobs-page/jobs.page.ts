@@ -1,12 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { EditJobDialogComponent } from './edit-job/edit-job.dialog';
-import { CreateJobDialogComponent } from './create-job/create-job.dialog';
-import { JobsStore } from '../store/job.store';
-import { FilterJobsComponent } from './filter/filter-jobs/filter-jobs.component';
+import { EditJobDialogComponent } from '../edit-job/edit-job.dialog';
+import { CreateJobDialogComponent } from '../create-job/create-job.dialog';
+import { JobsStore } from '../../store/job.store';
+import { FilterJobsComponent } from '../filter/filter-jobs/filter-jobs.component';
 import { Router } from '@angular/router';
 import {
-  BehaviorSubject,
   combineLatest,
   debounceTime,
   filter,
@@ -19,9 +18,9 @@ import {
   takeUntil,
 } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { JobViewModel } from '../data-access/jobs';
-import { IFilter } from '../../types/filter';
-import { ConfirmDialogComponent } from '../../shared/ui/confirm-dialog/confirm-dialog.component';
+import { JobViewModel } from '../../data-access/jobs';
+import { IFilter } from '@appTypes/filter';
+import { ConfirmDialogComponent } from '@shared/ui/confirm-dialog/confirm-dialog.component';
 
 @Component({
   template: `

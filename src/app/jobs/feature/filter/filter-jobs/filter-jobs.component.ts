@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormControl } from '@angular/forms';
-import { IFilter } from '../../../../types/filter';
+import { IFilter } from '@appTypes/filter';
 
 interface IJobFilterForm {
   title: FormControl<string | null>;
@@ -60,12 +60,7 @@ interface IJobFilterForm {
           <button mat-stroked-button class="mr-2" (click)="clearFilters()">
             Clear
           </button>
-          <button
-            mat-stroked-button
-            color="primary"
-            type="submit"
-            cdkFocusRegionStart
-          >
+          <button mat-stroked-button color="primary" type="submit">
             Apply Filters
           </button>
         </div>

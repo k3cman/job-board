@@ -5,7 +5,7 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { JobRepository } from './job.repository';
-import { JobAd, JobAdDto } from '../../types/jobs';
+import { JobAdDto } from '@appTypes/jobs';
 
 describe('JobRepository', () => {
   let service: JobRepository;

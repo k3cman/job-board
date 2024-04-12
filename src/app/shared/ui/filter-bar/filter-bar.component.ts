@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { KeyValuePipe, NgForOf, NgIf } from '@angular/common';
 import { MatChip, MatChipRow } from '@angular/material/chips';
 import { MatIcon } from '@angular/material/icon';
-import { IFilter } from '../../../types/filter';
+import { IFilter } from '@appTypes/filter';
 
 @Component({
   selector: 'app-filter-bar',

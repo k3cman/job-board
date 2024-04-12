@@ -12,21 +12,20 @@ import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { JobsPageComponent } from './jobs.page';
-import { JobsService } from '../data-access/jobs.service';
+import { JobsService } from '../../data-access/jobs.service';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { RouterTestingModule } from '@angular/router/testing';
-import { CreateJobDialogComponent } from './create-job/create-job.dialog';
-import { JobsBuilder } from '../data-access/jobs.builder';
-import { EditJobDialogComponent } from './edit-job/edit-job.dialog';
-import { ConfirmDialogComponent } from '../../shared/ui/confirm-dialog/confirm-dialog.component';
-import { FilterJobsComponent } from './filter/filter-jobs/filter-jobs.component';
+import { CreateJobDialogComponent } from '../create-job/create-job.dialog';
+import { JobsBuilder } from '../../data-access/jobs.builder';
+import { EditJobDialogComponent } from '../edit-job/edit-job.dialog';
+import { ConfirmDialogComponent } from '@shared/ui/confirm-dialog/confirm-dialog.component';
+import { FilterJobsComponent } from '../filter/filter-jobs/filter-jobs.component';
 
 describe('JobsPageComponent', function () {
   let component: JobsPageComponent;
   let fixture: ComponentFixture<JobsPageComponent>;
-  let modalService: MatDialog;
   let dialogSpy: jasmine.Spy;
-  let dialogRefSpyObj = jasmine.createSpyObj({
+  const dialogRefSpyObj = jasmine.createSpyObj({
     afterClosed: of({}),
     close: null,
   });

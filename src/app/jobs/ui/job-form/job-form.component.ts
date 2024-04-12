@@ -20,7 +20,7 @@ import {
 } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
-import { JobAdDto, JobAdStatus } from '../../../types/jobs';
+import { JobAdDto, JobAdStatus } from '@appTypes/jobs';
 import {
   MatChipGrid,
   MatChipInput,

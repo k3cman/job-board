@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { JobAdStatus } from '../../../types/jobs';
+import { JobAdStatus } from '@appTypes/jobs';
 import { UpperCasePipe } from '@angular/common';
 
 @Component({

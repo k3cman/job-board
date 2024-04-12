@@ -5,7 +5,7 @@ import { JobsService } from '../../jobs/data-access/jobs.service';
 import { combineLatest, Observable, switchMap, tap } from 'rxjs';
 import { ActivatedRoute, Params } from '@angular/router';
 import { InvoiceViewModel } from '../data-access/invoices';
-import { IFilter } from '../../types/filter';
+import { IFilter } from '@appTypes/filter';
 
 export interface IInvoiceStore {
   invoices: InvoiceViewModel[];

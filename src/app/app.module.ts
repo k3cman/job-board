@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { LayoutComponent } from './core/layout/layout/layout.component';
+import { LayoutComponent } from '@shared/ui/layout/layout/layout.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import localeCh from '@angular/common/locales/de-CH';

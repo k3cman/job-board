@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BaseRepository } from './base.repository';
-import { JobAdDto } from '../../types/jobs';
+import { JobAdDto } from '@appTypes/jobs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({

@@ -8,13 +8,13 @@ import {
   of,
   switchMap,
 } from 'rxjs';
-import { Invoice, InvoiceDto } from '../../types/invoices';
-import { InvoiceRepository } from '../../core/repositories/invoice.repository';
+import { Invoice, InvoiceDto } from '@appTypes/invoices';
+import { InvoiceRepository } from '@repositories/invoice.repository';
 import { InvoiceViewModel } from './invoices';
-import { JobRepository } from '../../core/repositories/job.repository';
-import { JobAdDto } from '../../types/jobs';
-import { IDeleteResponse } from '../../types/delete-response';
-import { IFilter } from '../../types/filter';
+import { JobRepository } from '@repositories/job.repository';
+import { JobAdDto } from '@appTypes/jobs';
+import { IDeleteResponse } from '@appTypes/delete-response';
+import { IFilter } from '@appTypes/filter';
 import { invoiceDueDate } from '../utils/invoice-due-date';
 import { invoiceAmount } from '../utils/invoice-amount';
 

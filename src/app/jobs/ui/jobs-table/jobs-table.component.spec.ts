@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { JobsTableComponent } from './jobs-table.component';
-import { JobSkillsComponent } from '../../../shared/ui/job-skills/job-skills.component';
-import { JobStatusComponent } from '../../../shared/ui/job-status/job-status.component';
+import { JobSkillsComponent } from '@shared/ui/job-skills/job-skills.component';
+import { JobStatusComponent } from '@shared/ui/job-status/job-status.component';
 import {
   MatCell,
   MatCellDef,

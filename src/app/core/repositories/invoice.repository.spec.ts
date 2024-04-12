@@ -1,6 +1,5 @@
-import { InvoicesService } from '../../invoices/data-access/invoices.service';
 import { InvoiceRepository } from './invoice.repository';
-import { HttpClient, HttpHandler, HttpXhrBackend } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import {
   HttpClientTestingModule,

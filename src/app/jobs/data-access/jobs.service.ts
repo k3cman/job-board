@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { JobAdDto } from '../../types/jobs';
+import { JobAdDto } from '@appTypes/jobs';
 import { map, Observable } from 'rxjs';
-import { JobRepository } from '../../core/repositories/job.repository';
-import { IDeleteResponse } from '../../types/delete-response';
+import { JobRepository } from '@repositories/job.repository';
+import { IDeleteResponse } from '@appTypes/delete-response';
 import { JobViewModel } from './jobs';
-import { IFilter } from '../../types/filter';
+import { IFilter } from '@appTypes/filter';
 
 @Injectable({
   providedIn: 'root',

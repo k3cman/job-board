@@ -4,9 +4,9 @@ import { JobsService } from '../data-access/jobs.service';
 import { EMPTY, iif, Observable, of, switchMap, tap } from 'rxjs';
 import { InvoicesService } from '../../invoices/data-access/invoices.service';
 import { ActivatedRoute, Params } from '@angular/router';
-import { IDeleteResponse } from '../../types/delete-response';
+import { IDeleteResponse } from '@appTypes/delete-response';
 import { JobViewModel } from '../data-access/jobs';
-import { IFilter } from '../../types/filter';
+import { IFilter } from '@appTypes/filter';
 
 interface IJobStore {
   jobs: JobViewModel[];

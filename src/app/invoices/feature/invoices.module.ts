@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
-import { PageHeadComponent } from '../../shared/ui/page-head/page-head.component';
+import { PageHeadComponent } from '@shared/ui/page-head/page-head.component';
 import { InvoicesTableComponent } from '../ui/invoices-table/invoices-table.component';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 

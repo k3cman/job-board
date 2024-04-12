@@ -1,4 +1,4 @@
-import { JobAdStatus } from '../../types/jobs';
+import { JobAdStatus } from '@appTypes/jobs';
 import { JobViewModel } from './jobs';
 
 export class JobsBuilder {

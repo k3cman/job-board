@@ -1,8 +1,8 @@
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { IDeleteResponse } from '../../types/delete-response';
-import { IFilter } from '../../types/filter';
+import { IDeleteResponse } from '@appTypes/delete-response';
+import { IFilter } from '@appTypes/filter';
 
 export interface IBaseRepository<T> {
   getAll(filter: IFilter): Observable<T[]>;

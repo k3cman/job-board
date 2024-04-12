@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import {
   AbstractControl,
   FormControl,
@@ -6,7 +12,12 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { MatFormField, MatLabel } from '@angular/material/form-field';
+import {
+  MatError,
+  MatFormField,
+  MatHint,
+  MatLabel,
+} from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
 import { JobAdDto, JobAdStatus } from '../../../types/jobs';
@@ -16,7 +27,7 @@ import {
   MatChipInputEvent,
   MatChipRow,
 } from '@angular/material/chips';
-import { NgForOf } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { JobViewModel } from '../../data-access/jobs';
 
@@ -40,6 +51,9 @@ interface IJobForm {
     MatChipGrid,
     MatIcon,
     MatChipRow,
+    MatHint,
+    MatError,
+    NgIf,
   ],
   template: `
     <form [formGroup]="form" class="flex flex-col">
@@ -50,6 +64,9 @@ interface IJobForm {
           formControlName="title"
           placeholder="Enter a job title"
         />
+        <mat-error *ngIf="form.get('title')?.hasError('required')"
+          >Please provide a Job Title</mat-error
+        >
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Description</mat-label>
@@ -58,6 +75,12 @@ interface IJobForm {
           formControlName="description"
           placeholder="Enter a job description"
         />
+        <mat-error *ngIf="form.get('description')?.hasError('required')"
+          >Please provide a description</mat-error
+        >
+        <mat-error *ngIf="form.get('description')?.hasError('minlength')"
+          >Please provide description longer than 10 characters</mat-error
+        >
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
@@ -76,13 +99,14 @@ interface IJobForm {
         <input
           #chipsInput
           matInput
-          placeholder="Add skills by typing each one and pressing enter. Click on chip to delete a skill"
+          placeholder="Add skills"
           [matChipInputFor]="chipList"
           (matChipInputTokenEnd)="addSkill($event); chipsInput.value = ''"
         />
+        <mat-hint>Press RETURN key after each skill to add the skill</mat-hint>
       </mat-form-field>
 
-      <div class="flex justify-end">
+      <div class="flex justify-end mt-4">
         <button class="mr-2" mat-stroked-button (click)="handleSubmit('draft')">
           {{ editMode ? 'Update' : 'Create' }}
         </button>
@@ -96,7 +120,7 @@ interface IJobForm {
       </div>
     </form>
   `,
-  styleUrl: './job-form.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JobFormComponent {
   public form = this.fb.group<IJobForm>({

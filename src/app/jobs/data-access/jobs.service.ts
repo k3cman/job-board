@@ -39,8 +39,8 @@ export class JobsService {
       skills: payload.skills,
       status: payload.status,
       updatedAt: new Date(),
-      createdAt: payload.metadata.createdAt,
-      _embedded: payload.metadata._embedded,
+      createdAt: new Date(),
+      _embedded: undefined,
     };
     return this.repository.create(dto).pipe(
       map((job) => ({

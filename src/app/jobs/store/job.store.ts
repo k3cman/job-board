@@ -1,20 +1,31 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { JobsService } from '../data-access/jobs.service';
-import { EMPTY, Observable, switchMap, tap } from 'rxjs';
+import {
+  BehaviorSubject,
+  EMPTY,
+  iif,
+  Observable,
+  of,
+  switchMap,
+  tap,
+} from 'rxjs';
 import { InvoicesService } from '../../invoices/data-access/invoices.service';
 import { InvoiceDto } from '../../types/invoices';
 import { ActivatedRoute } from '@angular/router';
 import { IDeleteResponse } from '../../types/delete-response';
 import { JobViewModel } from '../data-access/jobs';
 import { IFilter } from '../../types/filter';
+import { JobsModule } from '../feature/jobs.module';
 
 interface IJobStore {
   jobs: JobViewModel[];
   filters: IFilter;
   loading: boolean;
 }
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class JobsStore extends ComponentStore<IJobStore> {
   data$ = this.select((state) => state.jobs);
   loading$ = this.select((state) => state.loading);
@@ -38,14 +49,9 @@ export class JobsStore extends ComponentStore<IJobStore> {
 
   addJobAd = this.effect((job: Observable<JobViewModel>) => {
     return job.pipe(
-      switchMap((job: JobViewModel) => {
+      tap((job) => {
         this.updateJobs(job);
-        console.log(job);
-        if (job.status === 'published') {
-          return this.createInvoiceForPublishedJob(job.id);
-        } else {
-          return EMPTY;
-        }
+        this.createInvoice(job);
       }),
     );
   });
@@ -79,12 +85,8 @@ export class JobsStore extends ComponentStore<IJobStore> {
 
   updateJob = this.effect((job: Observable<JobViewModel>) => {
     return job.pipe(
-      switchMap((job) => {
-        if (job.status === 'published') {
-          return this.createInvoiceForPublishedJob(job.id);
-        } else {
-          return EMPTY;
-        }
+      tap((job) => {
+        this.createInvoice(job);
       }),
     );
   });
@@ -97,9 +99,9 @@ export class JobsStore extends ComponentStore<IJobStore> {
           status: 'published',
         });
       }),
-      switchMap((job: JobViewModel) => {
+      tap((job: JobViewModel) => {
         this.updateJobAd(job);
-        return this.createInvoiceForPublishedJob(job.id);
+        this.createInvoice(job);
       }),
     );
   });
@@ -117,6 +119,18 @@ export class JobsStore extends ComponentStore<IJobStore> {
               this.updateJobAd(job);
             }),
           );
+      }),
+    );
+  });
+
+  createInvoice = this.effect((job: Observable<JobViewModel>) => {
+    return job.pipe(
+      switchMap((one) => {
+        return iif(
+          () => one.status === 'published',
+          this.createInvoiceForPublishedJob(one.id),
+          of(EMPTY),
+        );
       }),
     );
   });

@@ -57,7 +57,8 @@
       "title": "3213",
       "description": "21321312321323123123",
       "skills": [],
-      "status": "draft"
+      "status": "published",
+      "updatedAt": "2024-04-12T10:43:12.995Z"
     },
     {
       "id": "2ae8",
@@ -71,7 +72,8 @@
       "title": "nemanja",
       "description": "neamnja kecman",
       "skills": [],
-      "status": "draft"
+      "status": "published",
+      "updatedAt": "2024-04-12T10:43:24.397Z"
     },
     {
       "id": "39f7",
@@ -100,6 +102,42 @@
       "description": "Nemanja test",
       "skills": [],
       "status": "draft"
+    },
+    {
+      "id": "2789",
+      "title": "askjdlasjldj",
+      "description": "Nemanja Kecman",
+      "skills": [],
+      "status": "published",
+      "updatedAt": "2024-04-12T10:44:19.178Z",
+      "createdAt": "2024-04-12T10:44:19.178Z"
+    },
+    {
+      "id": "c861",
+      "title": "12312",
+      "description": "123123123123123123",
+      "skills": [],
+      "status": "draft",
+      "updatedAt": "2024-04-12T10:52:06.389Z",
+      "createdAt": "2024-04-12T10:52:06.389Z"
+    },
+    {
+      "id": "624d",
+      "title": "Testing",
+      "description": "Testingggggggggggg",
+      "skills": [],
+      "status": "draft",
+      "updatedAt": "2024-04-12T10:58:21.801Z",
+      "createdAt": "2024-04-12T10:58:21.801Z"
+    },
+    {
+      "id": "75ae",
+      "title": "FUCK THIS",
+      "description": "FUCK RTHI SHIT",
+      "skills": [],
+      "status": "draft",
+      "updatedAt": "2024-04-12T10:59:10.029Z",
+      "createdAt": "2024-04-12T10:59:10.029Z"
     }
   ],
   "invoices": [
@@ -146,6 +184,30 @@
       "dueDate": "2024-05-27T09:35:23.580Z",
       "createdAt": "2024-04-12T09:35:23.581Z",
       "updatedAt": "2024-04-12T09:35:23.581Z"
+    },
+    {
+      "id": "ba65",
+      "jobAdId": "6836",
+      "amount": 10,
+      "dueDate": "2024-05-27T10:43:13.013Z",
+      "createdAt": "2024-04-12T10:43:13.013Z",
+      "updatedAt": "2024-04-12T10:43:13.013Z"
+    },
+    {
+      "id": "d579",
+      "jobAdId": "6c44",
+      "amount": 10,
+      "dueDate": "2024-05-27T10:43:24.408Z",
+      "createdAt": "2024-04-12T10:43:24.408Z",
+      "updatedAt": "2024-04-12T10:43:24.408Z"
+    },
+    {
+      "id": "0d85",
+      "jobAdId": "2789",
+      "amount": 30,
+      "dueDate": "2024-05-27T10:44:19.277Z",
+      "createdAt": "2024-04-12T10:44:19.277Z",
+      "updatedAt": "2024-04-12T10:44:19.277Z"
     }
   ]
 }

@@ -170,7 +170,6 @@ export class JobsPageComponent implements OnDestroy {
         filter((data) => !!data),
       )
       .subscribe((data) => {
-        console.log(data);
         this.store.addJobAd(data);
         this.snackBar.open(data.title + 'Job Ad created successfully');
       });

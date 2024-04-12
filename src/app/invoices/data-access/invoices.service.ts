@@ -7,6 +7,8 @@ import { JobRepository } from '../../core/repositories/job.repository';
 import { JobAdDto } from '../../types/jobs';
 import { IDeleteResponse } from '../../types/delete-response';
 import { IFilter } from '../../types/filter';
+import { invoiceDueDate } from '../utils/invoice-due-date';
+import { invoiceAmount } from '../utils/invoice-amount';
 
 @Injectable({
   providedIn: 'root',
@@ -54,7 +56,6 @@ export class InvoicesService {
   }
 
   createInvoice(payload: Partial<Invoice>): Observable<InvoiceDto> {
-    console.log(payload);
     const dto: Partial<InvoiceDto> = {
       ...payload,
       createdAt: new Date(),
@@ -69,13 +70,10 @@ export class InvoicesService {
   }
 
   createInvoiceForJob(jobId: string) {
-    // Todo create helper function
-    const dueDate = new Date();
-    dueDate.setDate(dueDate.getDate() + 45);
     const invoice: Partial<Invoice> = {
       jobAdId: jobId,
-      amount: Math.floor(Math.random() * 7) * 10,
-      dueDate,
+      amount: invoiceAmount(),
+      dueDate: invoiceDueDate(new Date()),
     };
 
     return this.createInvoice(invoice);

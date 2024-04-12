@@ -38,6 +38,7 @@ export class JobsStore extends ComponentStore<IJobStore> {
     return job.pipe(
       switchMap((job: JobAdDto) => {
         this.updateJobs(job);
+        console.log(job);
         if (job.status === 'published') {
           return this.createInvoiceForPublishedJob(job);
         } else {

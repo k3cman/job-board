@@ -42,7 +42,7 @@ import { AsyncPipe, NgIf } from '@angular/common';
         *ngIf="screenSize$ | async as screenSize"
       >
         <mat-drawer mode="side" [opened]="screenSize > 768">
-          <div class="w-56 border-r p-4 flex flex-col">
+          <div class="w-56 p-4 flex flex-col">
             <a
               routerLink="jobs"
               class="mb-2 p-2 h-8 w-full hover:bg-slate-200 flex items-center text-gray-700"
@@ -55,7 +55,7 @@ import { AsyncPipe, NgIf } from '@angular/common';
             >
           </div>
         </mat-drawer>
-        <mat-drawer-content>
+        <mat-drawer-content class="p-4">
           <ng-content></ng-content>
         </mat-drawer-content>
       </mat-drawer-container>

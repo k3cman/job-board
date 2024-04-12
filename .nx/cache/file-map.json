@@ -59,7 +59,7 @@
       },
       {
         "file": ".gitignore",
-        "hash": "15523142609672895898"
+        "hash": "15732893320569321390"
       },
       {
         "file": ".pretierrc.json",
@@ -127,7 +127,7 @@
       },
       {
         "file": "src/app/core/layout/layout/layout.component.ts",
-        "hash": "12332436918518076647"
+        "hash": "8557078067344217843"
       },
       {
         "file": "src/app/core/repositories/base.repository.ts",
@@ -135,7 +135,7 @@
       },
       {
         "file": "src/app/invoices/data-access/invoices.service.ts",
-        "hash": "8541498419826971766"
+        "hash": "7895107534151224185"
       },
       {
         "file": "src/app/invoices/feature/invoices-routing.module.ts",
@@ -143,11 +143,15 @@
       },
       {
         "file": "src/app/invoices/feature/invoices.module.ts",
-        "hash": "13657788319338073481"
+        "hash": "2152280324489629068"
       },
       {
         "file": "src/app/invoices/feature/invoices.page.ts",
-        "hash": "9347757367614717808"
+        "hash": "16177799082918422257"
+      },
+      {
+        "file": "src/app/invoices/store/invoices.store.ts",
+        "hash": "17882630610975617136"
       },
       {
         "file": "src/app/jobs/data-access/jobs-repo.service.ts",
@@ -155,7 +159,7 @@
       },
       {
         "file": "src/app/jobs/data-access/jobs.service.ts",
-        "hash": "15745964973875090530"
+        "hash": "9501855655578039455"
       },
       {
         "file": "src/app/jobs/feature/create-job/create-job.dialog.ts",
@@ -171,11 +175,11 @@
       },
       {
         "file": "src/app/jobs/feature/filter/filter-jobs/filter-jobs.component.spec.ts",
-        "hash": "12694961344737914983"
+        "hash": "11586578110557535965"
       },
       {
         "file": "src/app/jobs/feature/filter/filter-jobs/filter-jobs.component.ts",
-        "hash": "4069607708257454612"
+        "hash": "2141444072046094104"
       },
       {
         "file": "src/app/jobs/feature/jobs-routing.module.ts",
@@ -183,15 +187,15 @@
       },
       {
         "file": "src/app/jobs/feature/jobs.module.ts",
-        "hash": "1463492387260754349"
+        "hash": "3972813621309984874"
       },
       {
         "file": "src/app/jobs/feature/jobs.page.ts",
-        "hash": "1764750463588427634"
+        "hash": "2766133649506844956"
       },
       {
         "file": "src/app/jobs/store/job.store.ts",
-        "hash": "4862292304549655079"
+        "hash": "18230844129368073030"
       },
       {
         "file": "src/app/jobs/ui/job-form/job-form.component.scss",
@@ -203,7 +207,7 @@
       },
       {
         "file": "src/app/jobs/ui/job-form/job-form.component.ts",
-        "hash": "2122677933942040171"
+        "hash": "811007298575415700"
       },
       {
         "file": "src/app/shared/ui/job-skills/job-skills.component.scss",
@@ -247,7 +251,7 @@
       },
       {
         "file": "src/app/types/jobs.ts",
-        "hash": "1001087577221407693"
+        "hash": "1101252867260389483"
       },
       {
         "file": "src/assets/.gitkeep",

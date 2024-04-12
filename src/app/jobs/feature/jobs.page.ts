@@ -14,24 +14,25 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   template: `
     <ng-container *ngIf="vm$ | async as vm">
       <ng-container *ngIf="!vm.loading; else loading">
-        <div>
-          <div class="flex items-center justify-between p-2">
-            <div class="text-lg">Job Ads</div>
-            <div>
-              <button
-                mat-stroked-button
-                (click)="openFilter(vm.filters)"
-                class="mr-4"
-              >
-                <mat-icon>filter_alt</mat-icon>
-                Filter
-              </button>
-              <button mat-stroked-button color="primary" (click)="createJob()">
-                <mat-icon>add</mat-icon>
-                Create Job Ad
-              </button>
-            </div>
+        <div class="flex items-center justify-between p-2">
+          <div class="text-lg">Job Ads</div>
+          <div>
+            <button
+              mat-stroked-button
+              (click)="openFilter(vm.filters)"
+              class="mr-4"
+            >
+              <mat-icon>filter_alt</mat-icon>
+              Filter
+            </button>
+            <button mat-stroked-button color="primary" (click)="createJob()">
+              <mat-icon>add</mat-icon>
+              Create Job Ad
+            </button>
           </div>
+        </div>
+
+        <div class="bg-white p-4">
           <div>
             <ng-container *ngFor="let filter of vm.filters | keyvalue">
               <mat-chip-row>
@@ -168,6 +169,7 @@ export class JobsPageComponent implements OnDestroy {
         filter((data) => !!data),
       )
       .subscribe((data) => {
+        console.log(data);
         this.store.addJobAd(data);
         this.snackBar.open(data.title + 'Job Ad created successfully');
       });

@@ -22,6 +22,7 @@ export class CreateJobDialogComponent {
   }
 
   createJobAd($event: Partial<JobAdDto>) {
+    console.log($event);
     this.service.createJob($event as JobAdDto).subscribe((data) => {
       this.dialogRef.close(data);
     });

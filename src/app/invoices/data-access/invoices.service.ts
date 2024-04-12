@@ -36,7 +36,7 @@ export class InvoicesService {
     const dueDate = new Date();
     dueDate.setDate(dueDate.getDate() + 45);
     const invoice: Partial<InvoiceDto> = {
-      jobAdId: +jobId,
+      jobAdId: jobId,
       amount: Math.floor(Math.random() * 7) * 10,
       dueDate,
     };

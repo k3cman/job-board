@@ -6,7 +6,7 @@ export interface InvoiceDto extends Invoice {
 
 export interface Invoice {
   id: number;
-  jobAdId: number;
+  jobAdId: number | string;
   amount: number;
   dueDate: Date;
 }

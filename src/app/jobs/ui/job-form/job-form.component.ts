@@ -133,7 +133,6 @@ export class JobFormComponent {
     skills: this.fb.control<string[]>([]),
   });
 
-
   @Input() set initialValue(value: JobViewModel | undefined) {
     if (value) {
       this.editMode = true;

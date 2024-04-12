@@ -53,22 +53,35 @@ import { NgIf } from '@angular/common';
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
-          <button mat-icon-button [matMenuTriggerFor]="menu">
+          <button
+            mat-icon-button
+            [matMenuTriggerFor]="menu"
+            data-testid="action-button"
+          >
             <mat-icon>more_vert</mat-icon>
           </button>
 
-          <mat-menu #menu="matMenu">
+          <mat-menu #menu="matMenu" data-testid="action-menu">
             <button
               mat-menu-item
               (click)="statusChange.emit(element)"
               *ngIf="element.status !== 'archived'"
+              data-testid="publish-button"
             >
               {{ element.status === 'draft' ? 'Publish Job' : 'Archive Job' }}
             </button>
-            <button mat-menu-item (click)="editJob.emit(element)">
+            <button
+              mat-menu-item
+              (click)="editJob.emit(element)"
+              data-testid="edit-button"
+            >
               Edit Job
             </button>
-            <button mat-menu-item (click)="deleteJob.emit(element)">
+            <button
+              mat-menu-item
+              (click)="deleteJob.emit(element)"
+              data-testid="delete-button"
+            >
               Delete Job
             </button>
           </mat-menu>

@@ -42,11 +42,7 @@ import { MatOption, MatSelect } from '@angular/material/select';
 import { PageHeadComponent } from '../../shared/ui/page-head/page-head.component';
 import { JobsTableComponent } from '../ui/jobs-table/jobs-table.component';
 import { FilterBarComponent } from '../../shared/ui/filter-bar/filter-bar.component';
-import {
-  MatProgressSpinner,
-  MatProgressSpinnerModule,
-} from '@angular/material/progress-spinner';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [

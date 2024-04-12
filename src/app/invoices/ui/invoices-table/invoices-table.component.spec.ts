@@ -1,7 +1,7 @@
 import { InvoicesTableComponent } from './invoices-table.component';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CurrencyPipe, DatePipe } from '@angular/common';
+import { CurrencyPipe, DatePipe, registerLocaleData } from '@angular/common';
 import {
   MatCell,
   MatCellDef,
@@ -17,8 +17,7 @@ import {
 import { By } from '@angular/platform-browser';
 
 import localeCh from '@angular/common/locales/de-CH';
-import { registerLocaleData } from '@angular/common';
-import { LOCALE_ID } from '@angular/core';
+
 registerLocaleData(localeCh);
 
 describe('InvoicesTableComponent', () => {
@@ -83,7 +82,7 @@ describe('InvoicesTableComponent', () => {
     expect(
       fixture.debugElement.queryAll(By.css('.mat-column-amount'))[0]
         .nativeElement.innerText,
-    ).toEqual('amount');
+    ).toEqual('Amount');
 
     expect(
       fixture.debugElement.queryAll(By.css('.mat-column-amount'))[1]

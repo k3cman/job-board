@@ -1,4 +1,3 @@
-import { FilterJobsComponent } from '../filter-jobs/filter-jobs.component';
 import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {

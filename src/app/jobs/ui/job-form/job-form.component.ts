@@ -31,7 +31,7 @@ import {
 import { NgForOf, NgIf } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { JobViewModel } from '../../data-access/jobs';
-import { debounce, debounceTime, Subject, takeUntil } from 'rxjs';
+import { debounceTime, Subject, takeUntil } from 'rxjs';
 
 interface IJobForm {
   title: FormControl<string>;

@@ -18,6 +18,7 @@ import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { PageHeadComponent } from '../../shared/ui/page-head/page-head.component';
 import { InvoicesTableComponent } from '../ui/invoices-table/invoices-table.component';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [InvoicesPageComponent],
@@ -38,6 +39,7 @@ import { InvoicesTableComponent } from '../ui/invoices-table/invoices-table.comp
     MatIcon,
     PageHeadComponent,
     InvoicesTableComponent,
+    MatProgressSpinner,
   ],
 })
 export class InvoicesModule {}

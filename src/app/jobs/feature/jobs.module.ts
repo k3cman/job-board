@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { JobsPageComponent } from './jobs.page';
 import { JobsRoutingModule } from './jobs-routing.module';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import {
   MatCell,
   MatCellDef,
@@ -42,6 +42,10 @@ import { MatOption, MatSelect } from '@angular/material/select';
 import { PageHeadComponent } from '../../shared/ui/page-head/page-head.component';
 import { JobsTableComponent } from '../ui/jobs-table/jobs-table.component';
 import { FilterBarComponent } from '../../shared/ui/filter-bar/filter-bar.component';
+import {
+  MatProgressSpinner,
+  MatProgressSpinnerModule,
+} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -88,6 +92,8 @@ import { FilterBarComponent } from '../../shared/ui/filter-bar/filter-bar.compon
     PageHeadComponent,
     JobsTableComponent,
     FilterBarComponent,
+    MatProgressSpinnerModule,
+    NgOptimizedImage,
   ],
 })
 export class JobsModule {}

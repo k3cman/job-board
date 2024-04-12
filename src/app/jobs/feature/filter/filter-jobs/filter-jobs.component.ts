@@ -60,7 +60,12 @@ interface IJobFilterForm {
           <button mat-stroked-button class="mr-2" (click)="clearFilters()">
             Clear
           </button>
-          <button mat-stroked-button color="primary" type="submit">
+          <button
+            mat-stroked-button
+            color="primary"
+            type="submit"
+            cdkFocusRegionStart
+          >
             Apply Filters
           </button>
         </div>

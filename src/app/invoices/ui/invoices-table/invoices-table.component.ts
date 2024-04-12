@@ -39,21 +39,21 @@ import { InvoiceViewModel } from '../../data-access/invoices';
       </ng-container>
 
       <ng-container matColumnDef="jobName">
-        <th mat-header-cell *matHeaderCellDef>jobName</th>
+        <th mat-header-cell *matHeaderCellDef>JobAD name</th>
         <td mat-cell *matCellDef="let element">
           {{ element.jobName }}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="dueDate">
-        <th mat-header-cell *matHeaderCellDef>dueDate</th>
+        <th mat-header-cell *matHeaderCellDef>Due Date</th>
         <td mat-cell *matCellDef="let element">
           {{ element.dueDate | date: undefined : undefined : 'de-CH' }}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="amount">
-        <th mat-header-cell *matHeaderCellDef>amount</th>
+        <th mat-header-cell *matHeaderCellDef>Amount</th>
         <td mat-cell *matCellDef="let element">
           {{
             element.amount | currency: 'CHF' : 'symbol' : undefined : 'de-CH'

@@ -30,11 +30,11 @@ import { ConfirmDialogComponent } from '../../shared/ui/confirm-dialog/confirm-d
         <app-page-head
           pageName="Job ADs"
           [showCreate]="true"
-          [showFiler]="vm.data.length > 0"
+          [showFiler]="true"
           (openCreate)="handleCreateJob()"
           (openFilter)="openFilter(vm.filters)"
         ></app-page-head>
-        <ng-container *ngIf="vm.data.length; else noData">
+        <ng-container *ngIf="vm.data.length && vm.filters; else noData">
           <div class="bg-white p-4">
             <div>
               <app-filter-bar
@@ -57,8 +57,7 @@ import { ConfirmDialogComponent } from '../../shared/ui/confirm-dialog/confirm-d
       <div class="w-full h-full flex items-center justify-center flex flex-col">
         <img class="w-1/3 h-1/3" src="assets/no-data.svg" />
         <span class="text-2xl font-bold mt-10 text-slate-400"
-          >You have no Job Ads. Please create one by clicking on Create
-          button!</span
+          >No results. Try changing filters or create a new Job Ad!</span
         >
       </div>
     </ng-template>

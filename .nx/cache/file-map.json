@@ -87,7 +87,7 @@
       },
       {
         "file": "angular.json",
-        "hash": "5700357967028005526"
+        "hash": "9324242110524743007"
       },
       {
         "file": "package-lock.json",
@@ -102,40 +102,40 @@
         "hash": "6808114777949105242"
       },
       {
-        "file": "src/app/app.component.scss",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": "src/app/app.component.spec.ts",
-        "hash": "8453694449303042559"
-      },
-      {
         "file": "src/app/app.component.ts",
-        "hash": "15988655754133329636"
+        "hash": "7173858617614361817"
       },
       {
         "file": "src/app/app.module.ts",
         "hash": "14139789874459931136"
       },
       {
-        "file": "src/app/core/layout/layout/layout.component.scss",
-        "hash": "3244421341483603138"
-      },
-      {
         "file": "src/app/core/layout/layout/layout.component.spec.ts",
-        "hash": "11703824369928903315"
+        "hash": "17795990264672420464"
       },
       {
         "file": "src/app/core/layout/layout/layout.component.ts",
-        "hash": "8557078067344217843"
+        "hash": "16343051622138585902"
       },
       {
         "file": "src/app/core/repositories/base.repository.ts",
-        "hash": "9472414909415831612"
+        "hash": "4944657966516897762"
+      },
+      {
+        "file": "src/app/core/repositories/invoice.repository.ts",
+        "hash": "2386806994953431311"
+      },
+      {
+        "file": "src/app/core/repositories/job.repository.ts",
+        "hash": "8981336569919293228"
       },
       {
         "file": "src/app/invoices/data-access/invoices.service.ts",
-        "hash": "7895107534151224185"
+        "hash": "12757589534574153584"
+      },
+      {
+        "file": "src/app/invoices/data-access/invoices.ts",
+        "hash": "2017170568677470792"
       },
       {
         "file": "src/app/invoices/feature/invoices-routing.module.ts",
@@ -143,43 +143,55 @@
       },
       {
         "file": "src/app/invoices/feature/invoices.module.ts",
-        "hash": "2152280324489629068"
+        "hash": "10593230784007291568"
       },
       {
         "file": "src/app/invoices/feature/invoices.page.ts",
-        "hash": "16177799082918422257"
+        "hash": "14143053071612062638"
       },
       {
         "file": "src/app/invoices/store/invoices.store.ts",
-        "hash": "17882630610975617136"
+        "hash": "11378629887774729858"
       },
       {
-        "file": "src/app/jobs/data-access/jobs-repo.service.ts",
-        "hash": "5922671383756151464"
-      },
-      {
-        "file": "src/app/jobs/data-access/jobs.service.ts",
-        "hash": "9501855655578039455"
-      },
-      {
-        "file": "src/app/jobs/feature/create-job/create-job.dialog.ts",
-        "hash": "15045563858896420387"
-      },
-      {
-        "file": "src/app/jobs/feature/edit-job/edit-job.dialog.ts",
-        "hash": "17124286629481257777"
-      },
-      {
-        "file": "src/app/jobs/feature/filter/filter-jobs/filter-jobs.component.scss",
+        "file": "src/app/invoices/ui/invoices-table/invoices-table.component.scss",
         "hash": "3244421341483603138"
       },
       {
-        "file": "src/app/jobs/feature/filter/filter-jobs/filter-jobs.component.spec.ts",
-        "hash": "11586578110557535965"
+        "file": "src/app/invoices/ui/invoices-table/invoices-table.component.spec.ts",
+        "hash": "18285442050133832488"
+      },
+      {
+        "file": "src/app/invoices/ui/invoices-table/invoices-table.component.ts",
+        "hash": "17224907434555682766"
+      },
+      {
+        "file": "src/app/invoices/utils/invoice-amount.ts",
+        "hash": "13852903356992891769"
+      },
+      {
+        "file": "src/app/invoices/utils/invoice-due-date.ts",
+        "hash": "14569479880534725187"
+      },
+      {
+        "file": "src/app/jobs/data-access/jobs.service.ts",
+        "hash": "17950096402716699557"
+      },
+      {
+        "file": "src/app/jobs/data-access/jobs.ts",
+        "hash": "16712765382340866244"
+      },
+      {
+        "file": "src/app/jobs/feature/create-job/create-job.dialog.ts",
+        "hash": "9578508999682505774"
+      },
+      {
+        "file": "src/app/jobs/feature/edit-job/edit-job.dialog.ts",
+        "hash": "9990898842770525514"
       },
       {
         "file": "src/app/jobs/feature/filter/filter-jobs/filter-jobs.component.ts",
-        "hash": "2141444072046094104"
+        "hash": "2415234751754232903"
       },
       {
         "file": "src/app/jobs/feature/jobs-routing.module.ts",
@@ -187,75 +199,75 @@
       },
       {
         "file": "src/app/jobs/feature/jobs.module.ts",
-        "hash": "3972813621309984874"
+        "hash": "8823527906971099941"
       },
       {
         "file": "src/app/jobs/feature/jobs.page.ts",
-        "hash": "2766133649506844956"
+        "hash": "18249447568269409596"
       },
       {
         "file": "src/app/jobs/store/job.store.ts",
-        "hash": "18230844129368073030"
-      },
-      {
-        "file": "src/app/jobs/ui/job-form/job-form.component.scss",
-        "hash": "3244421341483603138"
+        "hash": "6721079937928480818"
       },
       {
         "file": "src/app/jobs/ui/job-form/job-form.component.spec.ts",
-        "hash": "13788143761450447586"
+        "hash": "9553026904503591848"
       },
       {
         "file": "src/app/jobs/ui/job-form/job-form.component.ts",
-        "hash": "811007298575415700"
+        "hash": "3418587886029702166"
       },
       {
-        "file": "src/app/shared/ui/job-skills/job-skills.component.scss",
-        "hash": "3244421341483603138"
+        "file": "src/app/jobs/ui/jobs-table/jobs-table.component.ts",
+        "hash": "14290067671926423865"
       },
       {
-        "file": "src/app/shared/ui/job-skills/job-skills.component.spec.ts",
-        "hash": "14075853846480510954"
+        "file": "src/app/shared/ui/confirm-dialog/confirm-dialog.component.ts",
+        "hash": "9192648045516317847"
+      },
+      {
+        "file": "src/app/shared/ui/filter-bar/filter-bar.component.ts",
+        "hash": "14420402323746090555"
       },
       {
         "file": "src/app/shared/ui/job-skills/job-skills.component.ts",
-        "hash": "16248987119523708615"
-      },
-      {
-        "file": "src/app/shared/ui/job-status/job-status.component.scss",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": "src/app/shared/ui/job-status/job-status.component.spec.ts",
-        "hash": "18422134598754045458"
+        "hash": "15806073708044549862"
       },
       {
         "file": "src/app/shared/ui/job-status/job-status.component.ts",
-        "hash": "7184439103376980192"
+        "hash": "9528032228843571008"
       },
       {
-        "file": "src/app/shared/ui/sidebar-dialog-wrapper/sidebar-dialog-wrapper.component.scss",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": "src/app/shared/ui/sidebar-dialog-wrapper/sidebar-dialog-wrapper.component.spec.ts",
-        "hash": "2077482557671277506"
+        "file": "src/app/shared/ui/page-head/page-head.component.ts",
+        "hash": "3915043714712797640"
       },
       {
         "file": "src/app/shared/ui/sidebar-dialog-wrapper/sidebar-dialog-wrapper.component.ts",
-        "hash": "13482421064107260683"
+        "hash": "16869476492263021739"
+      },
+      {
+        "file": "src/app/types/delete-response.ts",
+        "hash": "2882708992524743115"
+      },
+      {
+        "file": "src/app/types/filter.ts",
+        "hash": "13071168170080202639"
       },
       {
         "file": "src/app/types/invoices.ts",
-        "hash": "14084059248696481481"
+        "hash": "7630025082296009732"
       },
       {
         "file": "src/app/types/jobs.ts",
-        "hash": "1101252867260389483"
+        "hash": "3880374228201879129"
       },
       {
         "file": "src/assets/.gitkeep",
         "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/assets/no-data.svg",
+        "hash": "9205075301760631843"
       },
       {
         "file": "src/environments/environment.development.ts",

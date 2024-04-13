@@ -1,6 +1,14 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { InvoicesStore } from '../../store/invoices.store';
+import { IFilter } from '@appTypes/filter';
+import { Observable } from 'rxjs';
+import { InvoiceViewModel } from '../../data-access/invoices';
 
+export interface IViewInvoicesVM {
+  loading: boolean;
+  data: InvoiceViewModel[];
+  filters: IFilter;
+}
 @Component({
   template: `
     <ng-container *ngIf="vm$ | async as vm">
@@ -35,7 +43,7 @@ import { InvoicesStore } from '../../store/invoices.store';
   providers: [InvoicesStore],
 })
 export class ViewInvoicesComponent {
-  vm$ = this.store.vm$;
+  vm$: Observable<IViewInvoicesVM> = this.store.vm$;
   displayedColumns = ['id', 'jobName', 'dueDate', 'amount'];
   constructor(private store: InvoicesStore) {}
 }

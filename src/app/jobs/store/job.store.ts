@@ -14,6 +14,7 @@ interface IJobStore {
   loading: boolean;
   actionInProgress: boolean;
 }
+
 @Injectable({
   providedIn: 'root',
 })

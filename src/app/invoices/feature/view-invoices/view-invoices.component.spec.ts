@@ -1,7 +1,6 @@
 import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
-import { InvoicesPageComponent } from './invoices.page';
 import { InvoicesStore } from '../../store/invoices.store';
 import { BehaviorSubject, of } from 'rxjs';
 import { InvoicesService } from '../../data-access/invoices.service';
@@ -9,10 +8,14 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
+import {
+  IViewInvoicesVM,
+  ViewInvoicesComponent,
+} from './view-invoices.component';
 
 describe('InvoicesPageComponent', function () {
-  let component: InvoicesPageComponent;
-  let fixture: ComponentFixture<InvoicesPageComponent>;
+  let component: ViewInvoicesComponent;
+  let fixture: ComponentFixture<ViewInvoicesComponent>;
   const mockViewModel = new BehaviorSubject({
     loading: false,
     data: [],
@@ -28,7 +31,7 @@ describe('InvoicesPageComponent', function () {
         HttpClientTestingModule,
         CommonModule,
       ],
-      declarations: [InvoicesPageComponent],
+      declarations: [ViewInvoicesComponent],
       providers: [
         {
           provide: InvoicesStore,
@@ -48,7 +51,7 @@ describe('InvoicesPageComponent', function () {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InvoicesPageComponent);
+    fixture = TestBed.createComponent(ViewInvoicesComponent);
     component = fixture.componentInstance;
   });
 
@@ -57,7 +60,7 @@ describe('InvoicesPageComponent', function () {
   });
 
   it('should have vm', async () => {
-    component.vm$.subscribe((data) => {
+    component.vm$.subscribe((data: IViewInvoicesVM) => {
       expect(data).toEqual({
         loading: true,
         data: [],

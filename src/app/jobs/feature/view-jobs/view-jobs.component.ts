@@ -22,6 +22,12 @@ import { JobViewModel } from '../../data-access/jobs';
 import { IFilter } from '@appTypes/filter';
 import { ConfirmDialogComponent } from '@shared/ui/confirm-dialog/confirm-dialog.component';
 
+interface IViewJobsVM {
+  loading: boolean;
+  data: JobViewModel[];
+  filters: IFilter;
+}
+
 @Component({
   template: `
     <ng-container *ngIf="vm$ | async as vm">
@@ -78,7 +84,7 @@ export class ViewJobsComponent implements OnDestroy {
     }),
   );
 
-  vm$ = combineLatest({
+  vm$: Observable<IViewJobsVM> = combineLatest({
     loading: this.store.loading$,
     data: this.store.data$,
     filters: this.store.filters$,

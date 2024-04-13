@@ -11,7 +11,6 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { JobsPageComponent } from './jobs.page';
 import { JobsService } from '../../data-access/jobs.service';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -20,10 +19,11 @@ import { JobsBuilder } from '../../data-access/jobs.builder';
 import { EditJobDialogComponent } from '../edit-job/edit-job.dialog';
 import { ConfirmDialogComponent } from '@shared/ui/confirm-dialog/confirm-dialog.component';
 import { FilterJobsComponent } from '../filter-jobs/filter-jobs.component';
+import { ViewJobsComponent } from './view-jobs.component';
 
 describe('JobsPageComponent', function () {
-  let component: JobsPageComponent;
-  let fixture: ComponentFixture<JobsPageComponent>;
+  let component: ViewJobsComponent;
+  let fixture: ComponentFixture<ViewJobsComponent>;
   let dialogSpy: jasmine.Spy;
   const dialogRefSpyObj = jasmine.createSpyObj({
     afterClosed: of({}),
@@ -42,7 +42,7 @@ describe('JobsPageComponent', function () {
         MatProgressSpinner,
         RouterTestingModule,
       ],
-      declarations: [JobsPageComponent],
+      declarations: [ViewJobsComponent],
       providers: [
         MatDialog,
         {
@@ -57,7 +57,7 @@ describe('JobsPageComponent', function () {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(JobsPageComponent);
+    fixture = TestBed.createComponent(ViewJobsComponent);
     component = fixture.componentInstance;
     dialogSpy = spyOn(TestBed.get(MatDialog), 'open').and.returnValue(
       dialogRefSpyObj,
@@ -73,13 +73,13 @@ describe('JobsPageComponent', function () {
     window.dispatchEvent(new Event('resize'));
     fixture.detectChanges();
 
-    component.columns$.subscribe((data) => {
+    component.columns$.subscribe((data: string[]) => {
       expect(data).toEqual(['title', 'status', 'actions']);
     });
   }));
 
   it('should have all columns initialy', waitForAsync(() => {
-    component.columns$.subscribe((data) => {
+    component.columns$.subscribe((data: string[]) => {
       expect(data).toEqual([
         'title',
         'description',
